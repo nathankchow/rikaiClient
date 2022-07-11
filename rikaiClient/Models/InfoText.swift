@@ -28,13 +28,13 @@ struct InfoText {
             self.defs = []
             self.words = [self.raw]
         }
-        if self.words.count == self.defs.count {
-            print("def and word work")
-        } else {
-            print("def and word wrong?")
-            print(self.defs)
-            print(self.words)
-        }
+//        if self.words.count == self.defs.count {
+//            print("def and word work")
+//        } else {
+//            print("def and word wrong?")
+//            print(self.defs)
+//            print(self.words)
+//        }
     }
 
     static func get_words(raw: String, info: String, defs: [String]) -> [String] {
