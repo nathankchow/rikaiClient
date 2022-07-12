@@ -16,13 +16,9 @@ struct ContentView: View {
         TabView {
             SegmentedView()
                 .tabItem {
-                    Label("Segmented", systemImage: "play.circle.fill")
+                    Label("Main", systemImage: "play.circle.fill")
                 }
-            ManualView()
-                .tabItem {
-                    Label("Manual", systemImage:
-                    "play.circle.fill")
-                }
+
             SettingsView(IP_address: $settings.IP_address, DeepL_API_key: $settings.DeepL_API_key)
                 .tabItem {
                     Label("Settings",

@@ -13,9 +13,11 @@ final class Service: ObservableObject {
  
     var manager: SocketManager
     var socket: SocketIOClient
-    @Published var maintext: MainText = MainText("Waiting for a message from the server...")
+   // @Published var maintext: MainText = MainText("Waiting for a message from the server...")
     @Published var raw: String = "Waiting for a message from the server..."
     @Published var info: String = ""
+    @Published public private(set) var raws = [String]()
+    @Published public private(set) var infos = [String:String]()
     
     
     init() {
@@ -26,7 +28,6 @@ final class Service: ObservableObject {
         self.socket.on(clientEvent: .connect)  { (data,act) in
             print("Connected")
             self.socket.emit("my_message", ["string": "connection"])
-
         }
         self.socket.on("message") { (data,act) in
             print(data)
@@ -34,9 +35,10 @@ final class Service: ObservableObject {
             if let dict = data.first as? NSDictionary {
                 print("found string")
                 if let msg = dict["data"] as? String {
-                    self.info = "Loading info..."
-                    self.maintext = MainText(msg)
-                    self.raw = msg
+//                    self.info = "Loading info..."
+//                    self.maintext = MainText(msg)
+//                    self.raw = msg
+                    self.raws.append(msg)
                 } else {
                     print("not string?")
                 }
@@ -49,12 +51,11 @@ final class Service: ObservableObject {
             print(data)
             if let dict = data.first as? NSDictionary {
                 if let raw = dict["raw"] as? String {
-                    if raw == self.raw {
                         if let info = dict["info"] as? String {
-                            self.info = info
+                            self.infos[raw] = info
                         }
                     }
-                }
+    
                 
             }
         }
@@ -65,7 +66,7 @@ final class Service: ObservableObject {
     func reconnect() {
         self.socket.disconnect()
         self.getSocket()
-        self.socket.connect() 
+        self.socket.connect()
     }
     
     func getSocket()  {
@@ -81,9 +82,10 @@ final class Service: ObservableObject {
             if let dict = data.first as? NSDictionary {
                 print("found string")
                 if let msg = dict["data"] as? String {
-                    self.info = "Loading info..."
-                    self.maintext = MainText(msg)
-                    self.raw = msg
+//                    self.info = "Loading info..."
+//                    self.maintext = MainText(msg)
+//                    self.raw = msg
+                    self.raws.append(msg)
                 } else {
                     print("not string?")
                 }
@@ -96,12 +98,11 @@ final class Service: ObservableObject {
             print(data)
             if let dict = data.first as? NSDictionary {
                 if let raw = dict["raw"] as? String {
-                    if raw == self.raw {
                         if let info = dict["info"] as? String {
-                            self.info = info
+                            self.infos[raw] = info
                         }
                     }
-                }
+    
                 
             }
         }

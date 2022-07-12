@@ -10,9 +10,11 @@ import Foundation
 import WrappingHStack
 
 struct SegmentedLoadedView: View {
+    var raw: String
+    var info: String
     @EnvironmentObject var service: Service
     var infotext: InfoText {
-        InfoText(raw: service.raw, info: service.info)
+        InfoText(raw: raw, info: info)
     }
     var segmentedRawLoc: ([String],[Int]) {
         getSegmentedRaw(raw: infotext.raw, words: infotext.words)
@@ -114,6 +116,6 @@ struct SegmentedLoadedView: View {
 
 struct SegmentedLoadedView_Previews: PreviewProvider {
     static var previews: some View {
-        SegmentedLoadedView()
+        SegmentedLoadedView(raw: "123", info: "123")
     }
 }
