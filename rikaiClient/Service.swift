@@ -107,4 +107,9 @@ final class Service: ObservableObject {
             }
         }
     }
+    
+    func clearAll() {
+        self.raws = []
+        self.infos = [:]
+    }
 }

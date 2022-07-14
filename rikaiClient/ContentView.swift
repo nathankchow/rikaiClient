@@ -16,7 +16,7 @@ struct ContentView: View {
         TabView {
             SegmentedView()
                 .tabItem {
-                    Label("Main", systemImage: "play.circle.fill")
+                    Label("Main", systemImage: "t.bubble.fill")
                 }
 
             SettingsView(IP_address: $settings.IP_address, DeepL_API_key: $settings.DeepL_API_key)
