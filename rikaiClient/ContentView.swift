@@ -12,13 +12,17 @@ struct ContentView: View {
     
     @StateObject var service = Service()
     @StateObject var settings = Settings()
+    
     var body: some View {
         TabView {
             SegmentedView()
                 .tabItem {
                     Label("Main", systemImage: "t.bubble.fill")
                 }
-
+            ReviewView()
+                .tabItem{
+                    Label("Review", systemImage: "book.fill")
+                }
             SettingsView(IP_address: $settings.IP_address, DeepL_API_key: $settings.DeepL_API_key)
                 .tabItem {
                     Label("Settings",

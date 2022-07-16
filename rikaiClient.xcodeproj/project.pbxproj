@@ -23,6 +23,9 @@
 		C29BA8A5287177B300B9B794 /* SegmentedLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BA8A4287177B300B9B794 /* SegmentedLoadingView.swift */; };
 		C29BA8A7287177C500B9B794 /* SegmentedLoadedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BA8A6287177C500B9B794 /* SegmentedLoadedView.swift */; };
 		C2C5CE8A2861011D001B6AE8 /* MainText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C5CE892861011C001B6AE8 /* MainText.swift */; };
+		C2CD0B4B28824AEF001A7F1E /* ReviewText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CD0B4A28824AEF001A7F1E /* ReviewText.swift */; };
+		C2CD0B4D28825FD9001A7F1E /* ReviewTextStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CD0B4C28825FD9001A7F1E /* ReviewTextStore.swift */; };
+		C2CD0B4F28827725001A7F1E /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CD0B4E28827725001A7F1E /* ReviewView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,9 @@
 		C29BA8A6287177C500B9B794 /* SegmentedLoadedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedLoadedView.swift; sourceTree = "<group>"; };
 		C2C5CE892861011C001B6AE8 /* MainText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainText.swift; sourceTree = "<group>"; };
 		C2CAB1D5285073FE00FEE78E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C2CD0B4A28824AEF001A7F1E /* ReviewText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewText.swift; sourceTree = "<group>"; };
+		C2CD0B4C28825FD9001A7F1E /* ReviewTextStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTextStore.swift; sourceTree = "<group>"; };
+		C2CD0B4E28827725001A7F1E /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +71,8 @@
 				C2C5CE892861011C001B6AE8 /* MainText.swift */,
 				C29337D5286A55D9000CEC1F /* InfoText.swift */,
 				C292B772287A379D004644EB /* Settings.swift */,
+				C2CD0B4A28824AEF001A7F1E /* ReviewText.swift */,
+				C2CD0B4C28825FD9001A7F1E /* ReviewTextStore.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -93,6 +101,7 @@
 				C2890D46284E828900F0009D /* rikaiClientApp.swift */,
 				C29337D1286A50F6000CEC1F /* SegmentedView.swift */,
 				C29BA8A4287177B300B9B794 /* SegmentedLoadingView.swift */,
+				C2CD0B4E28827725001A7F1E /* ReviewView.swift */,
 				C29BA8A6287177C500B9B794 /* SegmentedLoadedView.swift */,
 				C2890D48284E828900F0009D /* ManualView.swift */,
 				C29337D3286A511C000CEC1F /* ContentView.swift */,
@@ -189,6 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2CD0B4D28825FD9001A7F1E /* ReviewTextStore.swift in Sources */,
 				C292B773287A379D004644EB /* Settings.swift in Sources */,
 				C29BA8A5287177B300B9B794 /* SegmentedLoadingView.swift in Sources */,
 				C2890D49284E828900F0009D /* ManualView.swift in Sources */,
@@ -198,9 +208,11 @@
 				C29337D4286A511C000CEC1F /* ContentView.swift in Sources */,
 				C2020AF2285C652100B19AF6 /* Service.swift in Sources */,
 				C2020AF0285C644200B19AF6 /* SFSafariViewWrapper.swift in Sources */,
+				C2CD0B4F28827725001A7F1E /* ReviewView.swift in Sources */,
 				C292B775287A3B5F004644EB /* SettingsView.swift in Sources */,
 				C2890D47284E828900F0009D /* rikaiClientApp.swift in Sources */,
 				C29337D2286A50F6000CEC1F /* SegmentedView.swift in Sources */,
+				C2CD0B4B28824AEF001A7F1E /* ReviewText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

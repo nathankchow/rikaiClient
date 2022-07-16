@@ -10,9 +10,12 @@ import Foundation
 import WrappingHStack
 
 struct SegmentedLoadedView: View {
+    @State var showDeepLTranslate = false
     var raw: String
     var info: String
     @EnvironmentObject var service: Service
+    @StateObject var store = ReviewTextStore()
+    
     var infotext: InfoText {
         InfoText(raw: raw, info: info)
     }
@@ -48,6 +51,10 @@ struct SegmentedLoadedView: View {
 //    }
 
     var body: some View {
+        VStack{
+            EmptyView().sheet(isPresented: self.$showDeepLTranslate) {
+                SFSafariViewWrapper(url: URL(string: "https://www.deepl.com/translator#ja/en/\(self.raw.addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)")!)
+            }
         ScrollViewReader {proxy in
             VStack {
                 WrappingHStack(0..<self.segmentedRaw.count, id: \.self, spacing: WrappingHStack.Spacing.constant(5.0), lineSpacing: CGFloat(10.0)){i in
@@ -56,6 +63,25 @@ struct SegmentedLoadedView: View {
                             .onTapGesture() {
                                 proxy.scrollTo(self.segmentedLocs[i], anchor: .top)
                             }
+                            .contextMenu {
+                                Button {
+                                    self.showDeepLTranslate.toggle()
+                                } label: {
+                                    Label("DeepL Translate", systemImage: "t.bubble.fill")
+                                }
+                                Button {
+                                    self.store.reviewTexts.append(ReviewText(raw: self.segmentedRaw[i], info: self.infotext.defs[self.segmentedLocs[i]]))
+                                    ReviewTextStore.save(reviewtexts: self.store.reviewTexts) {result in
+                                        if case .failure (let error) = result {
+                                            fatalError(error.localizedDescription)
+                                        }
+                                    }
+                                } label: {
+                                    Label("Add to Review", systemImage: "book.fill")
+                                }
+                            }
+                        
+                        
                     } else {
                         Text(self.segmentedRaw[i])
                     }
@@ -77,8 +103,10 @@ struct SegmentedLoadedView: View {
                 
                 
             }
-        }
+            }
     }
+        }
+    
     
     func getSegmentedRaw(raw: String, words: [String]) -> ([String],[Int]) {
         var segmentedRaw: [String] = []
