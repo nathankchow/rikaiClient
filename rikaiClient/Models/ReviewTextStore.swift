@@ -23,6 +23,10 @@ class ReviewTextStore: ObservableObject {
                                        create: false).appendingPathComponent("reviewtexts.data")
     }
     
+    func append(reviewtext: ReviewText) {
+        self.reviewTexts.append(reviewtext) 
+    }
+    
     static func load(completion: @escaping (Result<[ReviewText], Error>) -> Void) {
         DispatchQueue.global(qos: .background).async {
             do {
@@ -60,6 +64,16 @@ class ReviewTextStore: ObservableObject {
                 }
             }
         }
+    }
+    
+    static func reviewsToCSV(reviewtexts: [ReviewText]) -> String {
+        var csv = ""
+        for reviewtext in reviewtexts {
+            let raw = reviewtext.raw
+            let info = reviewtext.info
+            csv += raw + ",\"" + info.filter {$0 != "\""} + "\n"
+        }
+        return csv 
     }
     
     func foo() {

@@ -18,6 +18,7 @@ final class Service: ObservableObject {
     @Published var info: String = ""
     @Published public private(set) var raws = [String]()
     @Published public private(set) var infos = [String:String]()
+    @Published var canClearReview = false
     
     
     init() {
@@ -55,9 +56,15 @@ final class Service: ObservableObject {
                             self.infos[raw] = info
                         }
                     }
-    
-                
             }
+        }
+        
+        self.socket.on("can_clear_review") { (data,act) in
+            print("before: \(self.canClearReview)")
+            if !self.canClearReview {
+                self.canClearReview.toggle()
+            }
+            print("after: \(self.canClearReview)")
         }
                 
         self.socket.connect()
@@ -111,5 +118,15 @@ final class Service: ObservableObject {
     func clearAll() {
         self.raws = []
         self.infos = [:]
+    }
+    
+    func didClearReview() {
+        if self.canClearReview {
+            self.canClearReview.toggle()
+        }
+    }
+    
+    func emitCsv(csv: String) {
+        self.socket.emit("export_to_csv", csv)
     }
 }
