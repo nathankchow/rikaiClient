@@ -12,6 +12,7 @@ struct ContentView: View {
     
     @StateObject var service = Service()
     @StateObject var settings = Settings()
+    @StateObject var store = ReviewTextStore()
     
     var body: some View {
         TabView {
@@ -22,6 +23,16 @@ struct ContentView: View {
             ReviewView()
                 .tabItem{
                     Label("Review", systemImage: "book.fill")
+                }.onAppear {
+                    ReviewTextStore.load {result in
+                        switch result {
+                    case .failure (let error):
+                        print(error.localizedDescription)
+                        store.reviewTexts = []
+                    case .success (let reviewtexts):
+                        store.reviewTexts = reviewtexts
+                        }
+                    }
                 }
             SettingsView(IP_address: $settings.IP_address, DeepL_API_key: $settings.DeepL_API_key)
                 .tabItem {
@@ -31,6 +42,7 @@ struct ContentView: View {
                 }
         }.environmentObject(service)
             .environmentObject(settings)
+            .environmentObject(store)
     }
 }
 

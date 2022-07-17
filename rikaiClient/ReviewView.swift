@@ -10,7 +10,7 @@ import SwiftUI
 //NOTE: ANKI IMPORT FROM CSV ALLOWS FOR ESCAPED COMMAS (e.g. watashi, "me, myself, i")
 struct ReviewView: View {
     
-    @ObservedObject var store = ReviewTextStore()
+    @EnvironmentObject var store: ReviewTextStore
     @EnvironmentObject var service: Service
 
     var body: some View {
@@ -21,19 +21,10 @@ struct ReviewView: View {
                 }
             ) {
                 Text("Export Review Data to PC")
-            }.onAppear {
-                ReviewTextStore.load {result in
-                    switch result {
-                case .failure (let error):
-                    print(error.localizedDescription)
-                    store.reviewTexts = []
-                case .success (let reviewtexts):
-                    store.reviewTexts = reviewtexts
-                    }
-                }
-            }.onChange(of: service.canClearReview) {status in
+            }
+            .onChange(of: service.canClearReview) {status in
                 if status {
-                    self.store.reviewTexts = []
+                    self.store.clear()
                     ReviewTextStore.save(reviewtexts: self.store.reviewTexts) {result in
                         if case .failure (let error) = result {
                             fatalError(error.localizedDescription)
@@ -59,6 +50,6 @@ struct ReviewView: View {
 
 struct ReviewView_Previews: PreviewProvider {
     static var previews: some View {
-        ReviewView(store: ReviewTextStore())
+        ReviewView()
     }
 }

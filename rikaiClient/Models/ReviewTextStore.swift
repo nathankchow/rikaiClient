@@ -23,8 +23,12 @@ class ReviewTextStore: ObservableObject {
                                        create: false).appendingPathComponent("reviewtexts.data")
     }
     
-    func append(reviewtext: ReviewText) {
-        self.reviewTexts.append(reviewtext) 
+    func append(_ reviewtext: ReviewText) {
+        self.reviewTexts.append(reviewtext)
+    }
+    
+    func clear() {
+        self.reviewTexts = []
     }
     
     static func load(completion: @escaping (Result<[ReviewText], Error>) -> Void) {
@@ -71,7 +75,7 @@ class ReviewTextStore: ObservableObject {
         for reviewtext in reviewtexts {
             let raw = reviewtext.raw
             let info = reviewtext.info
-            csv += raw + ",\"" + info.filter {$0 != "\""} + "\n"
+            csv += raw + ",\"" + info.filter {$0 != "\""} + "\"\n"
         }
         return csv 
     }

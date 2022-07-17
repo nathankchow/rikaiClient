@@ -14,7 +14,7 @@ struct SegmentedLoadedView: View {
     var raw: String
     var info: String
     @EnvironmentObject var service: Service
-    @StateObject var store = ReviewTextStore()
+    @EnvironmentObject var store: ReviewTextStore
     
     var infotext: InfoText {
         InfoText(raw: raw, info: info)
@@ -70,7 +70,7 @@ struct SegmentedLoadedView: View {
                                     Label("DeepL Translate", systemImage: "t.bubble.fill")
                                 }
                                 Button {
-                                    self.store.reviewTexts.append(ReviewText(raw: self.segmentedRaw[i], info: self.infotext.defs[self.segmentedLocs[i]]))
+                                    self.store.append(ReviewText(raw: self.segmentedRaw[i], info: self.infotext.defs[self.segmentedLocs[i]]))
                                     ReviewTextStore.save(reviewtexts: self.store.reviewTexts) {result in
                                         if case .failure (let error) = result {
                                             fatalError(error.localizedDescription)
