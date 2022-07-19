@@ -90,7 +90,6 @@ struct InfoText {
                 }
             }
         }
-        print(words)
         return words
     }
 

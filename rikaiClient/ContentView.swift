@@ -27,9 +27,11 @@ struct ContentView: View {
                     ReviewTextStore.load {result in
                         switch result {
                     case .failure (let error):
+                        print("error?\n\n\n\n\n\n")
                         print(error.localizedDescription)
                         store.reviewTexts = []
                     case .success (let reviewtexts):
+                        print("Loading successful.")
                         store.reviewTexts = reviewtexts
                         }
                     }
