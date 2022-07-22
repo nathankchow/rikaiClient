@@ -76,7 +76,7 @@ class ReviewTextStore: ObservableObject {
             let raw = reviewtext.raw
             let info = reviewtext.info
             let sentence = reviewtext.sentence
-            csv += raw + ",\"" + info.filter {$0 != "\""} + "\n\n" + sentence + "\""
+            csv += raw + ",\"" + info.filter {$0 != "\""} + "\n\n" + sentence + "\"\n"
         }
         return csv 
     }
