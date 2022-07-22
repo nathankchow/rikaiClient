@@ -20,7 +20,8 @@ final class Settings: ObservableObject {
             UserDefaults.standard.set(DeepL_API_key, forKey: "DeepL_API_key")
         }
     }
-    
+    var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
     
     init() {
         self.IP_address = UserDefaults.standard.object(forKey: "IP_address") as? String ?? ""

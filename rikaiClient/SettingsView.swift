@@ -15,7 +15,10 @@ import Combine
 struct SettingsView: View {
     @Binding var IP_address: String
     @Binding var DeepL_API_key: String
-
+    @EnvironmentObject var settings: Settings
+    @EnvironmentObject var service: Service
+    @State var serviceStatus: String = "Disconnected"
+    
     var body: some View {
         VStack {
             HStack {
@@ -33,6 +36,25 @@ struct SettingsView: View {
                     "Enter key here",
                     text: $DeepL_API_key
                 )
+            }
+            HStack {
+                Text(serviceStatus).onReceive(self.settings.timer) { _ in
+                    let status = self.service.socket.status
+                    switch status {
+                    case .connecting:
+                        serviceStatus = "Trying to connect..."
+                    case .connected:
+                        serviceStatus = "Connected"
+                    default:
+                        serviceStatus = "Disconnected"
+                    }
+                }
+                Spacer()
+                Button(action: {
+                    self.service.reconnect()
+                }) {
+                    Text("RECONNECT")
+                }
             }
             Spacer()
         }.padding()
