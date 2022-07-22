@@ -78,13 +78,14 @@ struct InfoText {
             let line1 = def.components(separatedBy: "\n")[0].components(separatedBy: " ")
             var endi = line1.endIndex-1
             for i in 0..<line1.count {
-                if line1[i].contains("【") {
+                if line1[i].contains("【") || line1[i].contains("Compound") {
                     endi = i
+                    break
                 }
             }
             for i in stride(from: endi, through: 0, by: -1) {
                 let word = line1[i]
-                if word != "" && !word.contains("【") && !word.contains("】") {
+                if word != "" && !word.contains("【") && !word.contains("】") && !word.contains("Compound") {
                     words.append(word)
                     break
                 }

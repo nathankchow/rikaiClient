@@ -10,7 +10,6 @@ import Foundation
 import WrappingHStack
 
 struct SegmentedLoadedView: View {
-    @State var showDeepLTranslate = false
     var raw: String
     var info: String
     @EnvironmentObject var service: Service
@@ -52,9 +51,6 @@ struct SegmentedLoadedView: View {
 
     var body: some View {
         VStack{
-            EmptyView().sheet(isPresented: self.$showDeepLTranslate) {
-                SFSafariViewWrapper(url: URL(string: "https://www.deepl.com/translator#ja/en/\(self.raw.addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)")!)
-            }
         ScrollViewReader {proxy in
             VStack {
                 WrappingHStack(0..<self.segmentedRaw.count, id: \.self, spacing: WrappingHStack.Spacing.constant(5.0), lineSpacing: CGFloat(10.0)){i in
@@ -64,11 +60,6 @@ struct SegmentedLoadedView: View {
                                 proxy.scrollTo(self.segmentedLocs[i], anchor: .top)
                             }
                             .contextMenu {
-                                Button {
-                                    self.showDeepLTranslate.toggle()
-                                } label: {
-                                    Label("DeepL Translate", systemImage: "t.bubble.fill")
-                                }
                                 Button {
                                     self.store.append(ReviewText(raw: self.segmentedRaw[i], info: self.infotext.defs[self.segmentedLocs[i]], sentence: infotext.raw))
                                     ReviewTextStore.save(reviewtexts: self.store.reviewTexts) {result in
