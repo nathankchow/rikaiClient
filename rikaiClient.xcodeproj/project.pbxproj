@@ -11,6 +11,7 @@
 		C2020AF2285C652100B19AF6 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2020AF1285C652100B19AF6 /* Service.swift */; };
 		C22E5974284E8AE7003279A9 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = C22E5973284E8AE7003279A9 /* SocketIO */; };
 		C27A91FC28605573004CA119 /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = C27A91FB28605573004CA119 /* WrappingHStack */; };
+		C2805F1E28C3E7FC0028256D /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2805F1D28C3E7FC0028256D /* Utility.swift */; };
 		C2890D47284E828900F0009D /* rikaiClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2890D46284E828900F0009D /* rikaiClientApp.swift */; };
 		C2890D49284E828900F0009D /* ManualView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2890D48284E828900F0009D /* ManualView.swift */; };
 		C2890D4B284E828C00F0009D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2890D4A284E828C00F0009D /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		C2020AEF285C644200B19AF6 /* SFSafariViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariViewWrapper.swift; sourceTree = "<group>"; };
 		C2020AF1285C652100B19AF6 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Service.swift; path = rikaiClient/Service.swift; sourceTree = SOURCE_ROOT; };
+		C2805F1D28C3E7FC0028256D /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		C2890D43284E828900F0009D /* rikaiClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rikaiClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2890D46284E828900F0009D /* rikaiClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rikaiClientApp.swift; sourceTree = "<group>"; };
 		C2890D48284E828900F0009D /* ManualView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualView.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				C292B772287A379D004644EB /* Settings.swift */,
 				C2CD0B4A28824AEF001A7F1E /* ReviewText.swift */,
 				C2CD0B4C28825FD9001A7F1E /* ReviewTextStore.swift */,
+				C2805F1D28C3E7FC0028256D /* Utility.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 				C2020AF0285C644200B19AF6 /* SFSafariViewWrapper.swift in Sources */,
 				C2CD0B4F28827725001A7F1E /* ReviewView.swift in Sources */,
 				C292B775287A3B5F004644EB /* SettingsView.swift in Sources */,
+				C2805F1E28C3E7FC0028256D /* Utility.swift in Sources */,
 				C2890D47284E828900F0009D /* rikaiClientApp.swift in Sources */,
 				C29337D2286A50F6000CEC1F /* SegmentedView.swift in Sources */,
 				C2CD0B4B28824AEF001A7F1E /* ReviewText.swift in Sources */,

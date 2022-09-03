@@ -37,12 +37,25 @@ struct SegmentedView: View {
     
     var body: some View {
         VStack{
-            if (info.components(separatedBy: "\n\n*").count > 1) {
-                SegmentedLoadedView(raw: raw, info: info)
-            } else {
-                Text(raw).font(.headline).padding().border(Color(red: 0.380, green: 0.867, blue: 0.980), width: 2)
-                Text(info).font(.subheadline).padding([.leading, .trailing])
-            }
+            Group{
+                if (info.components(separatedBy: "\n\n*").count > 1) {
+                    SegmentedLoadedView(raw: raw, info: info)
+                } else {
+                    Text(raw).font(.headline).padding().border(Color(red: 0.380, green: 0.867, blue: 0.980), width: 2)
+                    Text(info).font(.subheadline).padding([.leading, .trailing])
+                }
+            }.gesture(DragGesture()
+                        .onEnded { value in
+                        print("value ",value.translation.width)
+                          let direction = detectDirection(value: value)
+                          if direction == .left {
+                            decreaseIndex()
+                          }
+                else if direction == .right {
+                    increaseIndex()
+                }
+                        }
+                      )
             Spacer()
             Button(action: {
             showDeepLTranslate = true
@@ -57,15 +70,15 @@ struct SegmentedView: View {
                 }
                 Button(action: self.increaseIndex) {
                     Image(systemName: "arrow.forward.circle.fill")
-
                 }
+                Text("\(min(service.raws.count, self.rawIndex + 1)) / \(service.raws.count)")
                 Button(action: self.clearAll) {
                     Text("Clear")
                 }
-                Toggle(isOn: $isFrozen) {
-                    Text("Freeze")
-                }
-            }
+            }.padding(.horizontal)
+            Toggle(isOn: $isFrozen) {
+                Text("Freeze")
+            }.padding(.horizontal)
         }.onChange(of: service.raws) { _ in
             if !isFrozen {
                 self.rawIndex = max(service.raws.count - 1,0) //for some reason,

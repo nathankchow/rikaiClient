@@ -17,7 +17,7 @@ struct SettingsView: View {
     @Binding var DeepL_API_key: String
     @EnvironmentObject var settings: Settings
     @EnvironmentObject var service: Service
-    @State var serviceStatus: String = "Disconnected"
+    @State var serviceStatus: String = "Fetching connection status..."
     
     var body: some View {
         VStack {
