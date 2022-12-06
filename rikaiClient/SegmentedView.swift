@@ -41,8 +41,12 @@ struct SegmentedView: View {
                 if (info.components(separatedBy: "\n\n*").count > 1) {
                     SegmentedLoadedView(raw: raw, info: info)
                 } else {
-                    Text(raw).font(.headline).padding().border(Color(red: 0.380, green: 0.867, blue: 0.980), width: 2)
-                    Text(info).font(.subheadline).padding([.leading, .trailing])
+                    VStack {
+                        Text(raw).font(.headline).padding().border(Color(red: 0.380, green: 0.867, blue: 0.980), width: 2)
+                        Text(info).font(.subheadline).padding([.leading, .trailing])
+                        Spacer()
+                    }.frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .contentShape(Rectangle())
                 }
             }.gesture(DragGesture()
                         .onEnded { value in
