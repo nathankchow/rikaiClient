@@ -34,6 +34,9 @@ struct SegmentedView: View {
             return "Loading info..."
         }
     }
+    var freezeButtonText: Text {
+        return Text(isFrozen ? "Unfreeze":"Freeze")
+    }
     
     var body: some View {
         VStack{
@@ -80,9 +83,9 @@ struct SegmentedView: View {
                     Text("Clear")
                 }
             }.padding(.horizontal)
-            Toggle(isOn: $isFrozen) {
-                Text("Freeze")
-            }.padding(.horizontal)
+            Button(action: onFreezeButtonPress) {
+                freezeButtonText
+            }.padding()
         }.onChange(of: service.raws) { _ in
             if !isFrozen {
                 self.rawIndex = max(service.raws.count - 1,0) //for some reason,
@@ -96,12 +99,29 @@ struct SegmentedView: View {
         if rawIndex != 0 && service.raws.count > 1 {
             rawIndex -= 1
         }
+        processFreeze()
     }
     
     func increaseIndex() {
         if (rawIndex != service.raws.count-1 && service.raws.count > 1) {
             rawIndex += 1
         }
+        processFreeze()
+    }
+    
+    func processFreeze() {
+        if rawIndex != service.raws.count-1 {
+            self.isFrozen = true
+        }
+    }
+    
+    func onFreezeButtonPress()  {
+        if isFrozen {
+            self.isFrozen = false
+            self.rawIndex = service.raws.count-1
+            return
+        }
+        isFrozen = true
     }
     
     func clearAll() {
