@@ -71,12 +71,15 @@ final class Service: ObservableObject {
     }
     
     func reconnect() {
-        self.socket.disconnect()
+        //self.socket.disconnect()
         self.getSocket()
         self.socket.connect()
     }
     
     func getSocket()  {
+        let IP_address: String = UserDefaults.standard.object(forKey: "IP_address") as? String ?? ""
+        let DeepL_API_key: String = UserDefaults.standard.object(forKey: "DeepL_API_key") as? String ?? ""
+        manager = SocketManager(socketURL:URL(string: "http://" + IP_address + ":8088")!, config: [.log(true), .compress])
         self.socket = self.manager.socket(forNamespace: "/")
         self.socket.on(clientEvent: .connect)  { (data,act) in
             print("Connected")
