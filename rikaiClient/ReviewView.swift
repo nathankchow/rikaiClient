@@ -15,6 +15,8 @@ struct ReviewView: View {
 
     var body: some View {
         VStack {
+            
+            Text("Number of review texts: " + String(store.reviewTexts.count))
             Button(
                 action: {
                     service.emitCsv(csv: ReviewTextStore.reviewsToCSV(reviewtexts: store.reviewTexts))

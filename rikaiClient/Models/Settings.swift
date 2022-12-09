@@ -20,11 +20,18 @@ final class Settings: ObservableObject {
             UserDefaults.standard.set(DeepL_API_key, forKey: "DeepL_API_key")
         }
     }
+    @Published var charCount: Int {
+        didSet {
+            UserDefaults.standard.set(charCount, forKey: "charCount")
+        }
+    }
+    
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     
     init() {
         self.IP_address = UserDefaults.standard.object(forKey: "IP_address") as? String ?? ""
         self.DeepL_API_key = UserDefaults.standard.object(forKey: "DeepL_API_key") as? String ?? ""
+        self.charCount = UserDefaults.standard.object(forKey: "charCount") as? Int ?? 0
     }
 }

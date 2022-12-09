@@ -10,6 +10,7 @@ import SocketIO
 
 struct SegmentedView: View {
     @EnvironmentObject var service: Service
+    @EnvironmentObject var settings: Settings
     @State var isFrozen = false
     @State var rawIndex = 0
     @State var showDeepLTranslate = false
@@ -87,11 +88,19 @@ struct SegmentedView: View {
                 freezeButtonText
             }.padding()
         }.onChange(of: service.raws) { _ in
+            //since we have subscription to service raws here, update charcount
+            updateCharCount()
             if !isFrozen {
                 self.rawIndex = max(service.raws.count - 1,0) //for some reason,
                 print("Changing rawIndex to \(self.rawIndex)")
 
             }
+        }
+    }
+    
+    func updateCharCount() {
+        if service.raws.count > 0 {
+            settings.charCount += service.raws.last?.count ?? 0
         }
     }
     

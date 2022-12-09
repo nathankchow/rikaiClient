@@ -37,6 +37,12 @@ struct SettingsView: View {
                     text: $DeepL_API_key
                 )
             }
+            Text("Char count collection start date: 12-09-22")
+            HStack {
+                Text("Char count")
+                Spacer()
+                Text(String(settings.charCount))
+            }
             HStack {
                 Text(serviceStatus).onReceive(self.settings.timer) { _ in
                     let status = self.service.socket.status
