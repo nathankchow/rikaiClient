@@ -96,7 +96,7 @@ struct SegmentedLoadedView: View {
             }
             }
     }
-        }
+    }
     
     
     func getSegmentedRaw(raw: String, words: [String]) -> ([String],[Int]) {

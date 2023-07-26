@@ -121,7 +121,10 @@ struct SegmentedView: View {
     func processFreeze() {
         if rawIndex != service.raws.count-1 {
             self.isFrozen = true
+        } else {
+            self.isFrozen = false
         }
+        
     }
     
     func onFreezeButtonPress()  {

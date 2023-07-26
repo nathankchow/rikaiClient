@@ -14,6 +14,21 @@ struct ContentView: View {
     @StateObject var settings = Settings()
     @StateObject var store = ReviewTextStore()
     
+    @State var reviewListCleared = false
+    
+    func checkEmptyReviewList() {
+        if store.reviewTexts.count == 0 {
+            reviewListCleared = true
+        }
+    }
+    
+    func delayCheckEmptyReviewList(_ delay: Float) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            checkEmptyReviewList()
+            print(store.reviewTexts)
+        }
+    }
+    
     var body: some View {
         TabView {
             SegmentedView()
@@ -23,18 +38,6 @@ struct ContentView: View {
             ReviewView()
                 .tabItem{
                     Label("Review", systemImage: "book.fill")
-                }.onAppear {
-                    ReviewTextStore.load {result in
-                        switch result {
-                    case .failure (let error):
-                        print("error?\n\n\n\n\n\n")
-                        print(error.localizedDescription)
-                        store.reviewTexts = []
-                    case .success (let reviewtexts):
-                        print("Loading successful.")
-                        store.reviewTexts = reviewtexts
-                        }
-                    }
                 }
             SettingsView(IP_address: $settings.IP_address, DeepL_API_key: $settings.DeepL_API_key)
                 .tabItem {
@@ -42,7 +45,34 @@ struct ContentView: View {
                           systemImage:
                     "gearshape.fill")
                 }
-        }.environmentObject(service)
+        }
+        .onAppear {
+            ReviewTextStore.load {result in
+                switch result {
+                case .failure (let error):
+                    print("Failed to load.")
+                    print(error.localizedDescription)
+                    store.reviewTexts = []
+                case .success (let reviewtexts):
+                    print("Loading successful.")
+                    store.reviewTexts = reviewtexts
+                }
+            }
+            print("HAHHA/n/n/n/n/n/n/n/n/nwdfewgegweg")
+            print(store.reviewTexts)
+            print(settings.IP_address)
+            delayCheckEmptyReviewList(2.0)
+        }
+        .onChange(of: store.reviewTexts) { reviewTexts in
+            if reviewTexts.count == 0 {
+                reviewListCleared=true
+            }
+        }
+        .alert(isPresented: $reviewListCleared) {
+            Alert(title: Text("Review list was cleared!"), message: Text("Tap OK!"),
+                  dismissButton: .default(Text("OK")))
+        }
+        .environmentObject(service)
             .environmentObject(settings)
             .environmentObject(store)
     }

@@ -108,9 +108,9 @@
 				C29BA8A6287177C500B9B794 /* SegmentedLoadedView.swift */,
 				C2890D48284E828900F0009D /* ManualView.swift */,
 				C29337D3286A511C000CEC1F /* ContentView.swift */,
+				C292B774287A3B5F004644EB /* SettingsView.swift */,
 				C2890D4A284E828C00F0009D /* Assets.xcassets */,
 				C2890D4C284E828C00F0009D /* Preview Content */,
-				C292B774287A3B5F004644EB /* SettingsView.swift */,
 			);
 			path = rikaiClient;
 			sourceTree = "<group>";
