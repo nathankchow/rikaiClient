@@ -47,6 +47,7 @@ struct ContentView: View {
                 }
         }
         .onAppear {
+            UIApplication.shared.isIdleTimerDisabled = true
             ReviewTextStore.load {result in
                 switch result {
                 case .failure (let error):
