@@ -29,26 +29,6 @@ struct SegmentedLoadedView: View {
     }
     @State var blacklist: Set<String> = ["は","を","も","に","へ","で","だって","って","が","から","と","や","の","ね","よ"]
 
-//    var body: some View {
-//        VStack{
-//            Text(self.service.raw).font(.headline).padding().border(Color(red: 0.380, green: 0.867, blue: 0.980), width: 2)
-//            ScrollView {
-//
-//                ForEach(0..<self.infotext.defs.count, id: \.self) {i in
-//                    if !self.blacklist.contains(self.infotext.words[i]){
-//                        HStack{
-//                            Text("*" + self.infotext.defs[i])
-//                            Spacer()
-//                        }
-//                        if i != self.infotext.defs.count-1 {
-//                            Text("\n")
-//                        }
-//                    }
-//                }
-//            }.padding([.leading,.trailing])
-//        }
-//    }
-
     var body: some View {
         VStack{
         ScrollViewReader {proxy in
@@ -77,6 +57,7 @@ struct SegmentedLoadedView: View {
                         Text(self.segmentedRaw[i])
                     }
                 }.padding().border(Color(red: 0.380, green: 0.867, blue: 0.980), width: 2)
+                
                 ScrollView {
                     ForEach(0..<self.infotext.defs.count, id: \.self) {i in
                         if !self.blacklist.contains(self.infotext.words[i]){

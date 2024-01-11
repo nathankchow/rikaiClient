@@ -10,6 +10,7 @@
 		C2020AF0285C644200B19AF6 /* SFSafariViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2020AEF285C644200B19AF6 /* SFSafariViewWrapper.swift */; };
 		C2020AF2285C652100B19AF6 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2020AF1285C652100B19AF6 /* Service.swift */; };
 		C22E5974284E8AE7003279A9 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = C22E5973284E8AE7003279A9 /* SocketIO */; };
+		C26829CC2A760713003FE3BB /* TranslateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26829CB2A760713003FE3BB /* TranslateView.swift */; };
 		C27A91FC28605573004CA119 /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = C27A91FB28605573004CA119 /* WrappingHStack */; };
 		C2805F1E28C3E7FC0028256D /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2805F1D28C3E7FC0028256D /* Utility.swift */; };
 		C2890D47284E828900F0009D /* rikaiClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2890D46284E828900F0009D /* rikaiClientApp.swift */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		C2020AEF285C644200B19AF6 /* SFSafariViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariViewWrapper.swift; sourceTree = "<group>"; };
 		C2020AF1285C652100B19AF6 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Service.swift; path = rikaiClient/Service.swift; sourceTree = SOURCE_ROOT; };
+		C26829CB2A760713003FE3BB /* TranslateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateView.swift; sourceTree = "<group>"; };
 		C2805F1D28C3E7FC0028256D /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		C2890D43284E828900F0009D /* rikaiClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rikaiClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2890D46284E828900F0009D /* rikaiClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rikaiClientApp.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				C2CAB1D5285073FE00FEE78E /* Info.plist */,
 				C2890D46284E828900F0009D /* rikaiClientApp.swift */,
 				C29337D1286A50F6000CEC1F /* SegmentedView.swift */,
+				C26829CB2A760713003FE3BB /* TranslateView.swift */,
 				C29BA8A4287177B300B9B794 /* SegmentedLoadingView.swift */,
 				C2CD0B4E28827725001A7F1E /* ReviewView.swift */,
 				C29BA8A6287177C500B9B794 /* SegmentedLoadedView.swift */,
@@ -213,6 +216,7 @@
 				C2020AF0285C644200B19AF6 /* SFSafariViewWrapper.swift in Sources */,
 				C2CD0B4F28827725001A7F1E /* ReviewView.swift in Sources */,
 				C292B775287A3B5F004644EB /* SettingsView.swift in Sources */,
+				C26829CC2A760713003FE3BB /* TranslateView.swift in Sources */,
 				C2805F1E28C3E7FC0028256D /* Utility.swift in Sources */,
 				C2890D47284E828900F0009D /* rikaiClientApp.swift in Sources */,
 				C29337D2286A50F6000CEC1F /* SegmentedView.swift in Sources */,

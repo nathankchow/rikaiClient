@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SegmentedLoadingView: View {
     @EnvironmentObject var service: Service
-
     
     var body: some View {
         VStack{
