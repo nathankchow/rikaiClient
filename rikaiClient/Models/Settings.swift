@@ -26,6 +26,12 @@ final class Settings: ObservableObject {
         }
     }
     
+    @Published var autoAddReview: Bool {
+        didSet {
+            UserDefaults.standard.set(autoAddReview, forKey: "autoAddReview")
+        }
+    }
+    
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     
@@ -33,5 +39,6 @@ final class Settings: ObservableObject {
         self.IP_address = UserDefaults.standard.object(forKey: "IP_address") as? String ?? ""
         self.DeepL_API_key = UserDefaults.standard.object(forKey: "DeepL_API_key") as? String ?? ""
         self.charCount = UserDefaults.standard.object(forKey: "charCount") as? Int ?? 0
+        self.autoAddReview = UserDefaults.standard.object(forKey: "autoAddReview") as? Bool ?? false
     }
 }

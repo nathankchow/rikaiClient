@@ -62,6 +62,7 @@ struct SettingsView: View {
                     Text("RECONNECT")
                 }
             }
+            Toggle("Auto add to review on tap", isOn: $settings.autoAddReview)
             Spacer()
         }.padding()
     }

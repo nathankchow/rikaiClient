@@ -52,7 +52,7 @@ struct SegmentedView: View {
         VStack{
             Group{
                 if (!showTranslate && info.components(separatedBy: "\n\n*").count > 1) {
-                    SegmentedLoadedView(raw: raw, info: info)
+                    SegmentedLoadedView(raw: raw, info: info, isFrozen: $isFrozen)
                 } else if (!showTranslate){
                     VStack {
                         Text(raw).font(.headline).padding().border(Color(red: 0.380, green: 0.867, blue: 0.980), width: 2)

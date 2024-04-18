@@ -14,6 +14,7 @@ struct SegmentedLoadedView: View {
     var info: String
     @EnvironmentObject var service: Service
     @EnvironmentObject var store: ReviewTextStore
+    @EnvironmentObject var settings: Settings
     
     var infotext: InfoText {
         InfoText(raw: raw, info: info)
@@ -28,7 +29,8 @@ struct SegmentedLoadedView: View {
         return segmentedRawLoc.1
     }
     @State var blacklist: Set<String> = ["は","を","も","に","へ","で","だって","って","が","から","と","や","の","ね","よ"]
-
+    @Binding var isFrozen:Bool
+    
     var body: some View {
         VStack{
         ScrollViewReader {proxy in
@@ -37,16 +39,14 @@ struct SegmentedLoadedView: View {
                     if self.segmentedLocs[i] != -1 && !self.blacklist.contains(self.segmentedRaw[i]) {
                         Text(self.segmentedRaw[i]).font(.headline).underline()
                             .onTapGesture() {
+                                if settings.autoAddReview {
+                                    addReviewText(i)
+                                }
                                 proxy.scrollTo(self.segmentedLocs[i], anchor: .top)
                             }
                             .contextMenu {
                                 Button {
-                                    self.store.append(ReviewText(raw: self.segmentedRaw[i], info: self.infotext.defs[self.segmentedLocs[i]], sentence: infotext.raw))
-                                    ReviewTextStore.save(reviewtexts: self.store.reviewTexts) {result in
-                                        if case .failure (let error) = result {
-                                            fatalError(error.localizedDescription)
-                                        }
-                                    }
+                                  addReviewText(i)
                                 } label: {
                                     Label("Add to Review", systemImage: "book.fill")
                                 }
@@ -79,6 +79,14 @@ struct SegmentedLoadedView: View {
     }
     }
     
+    func addReviewText(_ i:Int) -> Void {
+        self.store.append(ReviewText(raw: self.segmentedRaw[i], info: self.infotext.defs[self.segmentedLocs[i]], sentence: infotext.raw))
+        ReviewTextStore.save(reviewtexts: self.store.reviewTexts) {result in
+            if case .failure (let error) = result {
+                fatalError(error.localizedDescription)
+            }
+        }
+    }
     
     func getSegmentedRaw(raw: String, words: [String]) -> ([String],[Int]) {
         var segmentedRaw: [String] = []
@@ -116,6 +124,6 @@ struct SegmentedLoadedView: View {
 
 struct SegmentedLoadedView_Previews: PreviewProvider {
     static var previews: some View {
-        SegmentedLoadedView(raw: "123", info: "123")
+        SegmentedLoadedView(raw: "123", info: "123", isFrozen: .constant(false))
     }
 }
