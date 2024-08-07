@@ -46,6 +46,10 @@ struct ContentView: View {
                           systemImage:
                     "gearshape.fill")
                 }
+            ScrollingView()
+                .tabItem {
+                    Label("TEST", systemImage: "list.bullet.clipboard.fill") //TODO: Rename
+                }
         }
         .onAppear {
             UIApplication.shared.isIdleTimerDisabled = true
@@ -85,3 +89,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+		
