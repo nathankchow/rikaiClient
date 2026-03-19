@@ -4,6 +4,7 @@
 //
 //  Created by natha on 7/29/23.
 //
+// #TODO:  use optionals in translate request
 
 import SwiftUI
 
@@ -41,12 +42,13 @@ struct TranslateView: View {
         if (apiKey == "") {
             return
         }
-        guard let url = URL(string: "https://api-free.deepl.com/v2/translate?target_lang=EN-US&source_lang=JA&auth_key=\(apiKey)&text=\(text.addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)") else {
+        guard let url = URL(string: "https://api-free.deepl.com/v2/translate?target_lang=EN-US&source_lang=JA&text=\(text.addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)") else {
             return
         }
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
+        request.addValue("DeepL-Auth-Key " + apiKey, forHTTPHeaderField: "Authorization")
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
@@ -56,10 +58,9 @@ struct TranslateView: View {
             let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
             if let responseJSON = responseJSON as? [String: Any] {
                 print(responseJSON)
-                print(type(of: responseJSON["translations"]!))
             }
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
             let translations = try! decoder.decode(TranslationData.self, from: data)
             translation = translations.translations.first!["text"]!
         }

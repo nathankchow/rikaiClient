@@ -4,6 +4,7 @@
 //
 //  Created by natha on 6/17/22.
 //
+//#TODO: Should not have duplicated code between init and getSocket
 
 import Foundation
 import SocketIO
@@ -115,6 +116,14 @@ final class Service: ObservableObject {
     
                 
             }
+        }
+        
+        self.socket.on("can_clear_review") { (data,act) in
+            print("before: \(self.canClearReview)")
+            if !self.canClearReview {
+                self.canClearReview.toggle()
+            }
+            print("after: \(self.canClearReview)")
         }
     }
     

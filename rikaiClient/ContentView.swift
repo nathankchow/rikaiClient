@@ -64,7 +64,6 @@ struct ContentView: View {
                     store.reviewTexts = reviewtexts
                 }
             }
-            print("HAHHA/n/n/n/n/n/n/n/n/nwdfewgegweg")
             print(store.reviewTexts)
             print(settings.IP_address)
             delayCheckEmptyReviewList(2.0)
