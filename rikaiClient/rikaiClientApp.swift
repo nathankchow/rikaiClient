@@ -11,7 +11,7 @@ import SwiftUI
 struct rikaiClientApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootNavigationView()
         }
     }
 }

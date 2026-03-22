@@ -9,7 +9,7 @@
 import SwiftUI
 
 //NOTE: ANKI IMPORT FROM CSV ALLOWS FOR ESCAPED COMMAS (e.g. watashi, "me, myself, i")
-struct ReviewView: View {
+struct ReviewHomeView: View {
     
     @EnvironmentObject var store: ReviewTextStore
     @EnvironmentObject var service: Service
@@ -18,7 +18,6 @@ struct ReviewView: View {
     var body: some View {
         NavigationStack{
             VStack {
-                
                 Text("Number of review texts: " + String(store.reviewTexts.count))
                 
                 Button(
@@ -110,6 +109,6 @@ struct EditReviewView: View {
 
 struct ReviewView_Previews: PreviewProvider {
     static var previews: some View {
-        ReviewView()
+        ReviewHomeView()
     }
 }

@@ -9,7 +9,7 @@
 import SwiftUI
 import Combine
 
-struct ContentView: View {
+struct RootNavigationView: View {
     
     @StateObject var service = Service()
     @StateObject var settings = Settings()
@@ -32,11 +32,11 @@ struct ContentView: View {
     
     var body: some View {
         TabView {
-            SegmentedView()
+            SegmentedRootView()
                 .tabItem {
                     Label("Main", systemImage: "t.bubble.fill")
                 }
-            ReviewView()
+            ReviewHomeView()
                 .tabItem{
                     Label("Review", systemImage: "book.fill")
                 }
@@ -78,14 +78,14 @@ struct ContentView: View {
                   dismissButton: .default(Text("OK")))
         }
         .environmentObject(service)
-            .environmentObject(settings)
-            .environmentObject(store)
+        .environmentObject(settings)
+        .environmentObject(store)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        RootNavigationView()
     }
 }
 		

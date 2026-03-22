@@ -7,53 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C2020AF0285C644200B19AF6 /* SFSafariViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2020AEF285C644200B19AF6 /* SFSafariViewWrapper.swift */; };
 		C2020AF2285C652100B19AF6 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2020AF1285C652100B19AF6 /* Service.swift */; };
 		C22E5974284E8AE7003279A9 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = C22E5973284E8AE7003279A9 /* SocketIO */; };
-		C26829CC2A760713003FE3BB /* TranslateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26829CB2A760713003FE3BB /* TranslateView.swift */; };
 		C27A91FC28605573004CA119 /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = C27A91FB28605573004CA119 /* WrappingHStack */; };
-		C2805F1E28C3E7FC0028256D /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2805F1D28C3E7FC0028256D /* Utility.swift */; };
+		C2805F1E28C3E7FC0028256D /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2805F1D28C3E7FC0028256D /* Utilities.swift */; };
 		C2890D47284E828900F0009D /* rikaiClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2890D46284E828900F0009D /* rikaiClientApp.swift */; };
-		C2890D49284E828900F0009D /* ManualView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2890D48284E828900F0009D /* ManualView.swift */; };
 		C2890D4B284E828C00F0009D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2890D4A284E828C00F0009D /* Assets.xcassets */; };
 		C2890D4E284E828C00F0009D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2890D4D284E828C00F0009D /* Preview Assets.xcassets */; };
 		C292B773287A379D004644EB /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C292B772287A379D004644EB /* Settings.swift */; };
 		C292B775287A3B5F004644EB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C292B774287A3B5F004644EB /* SettingsView.swift */; };
 		C29337D2286A50F6000CEC1F /* SegmentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29337D1286A50F6000CEC1F /* SegmentedView.swift */; };
-		C29337D4286A511C000CEC1F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29337D3286A511C000CEC1F /* ContentView.swift */; };
-		C29337D6286A55D9000CEC1F /* InfoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29337D5286A55D9000CEC1F /* InfoText.swift */; };
+		C29337D4286A511C000CEC1F /* RootNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29337D3286A511C000CEC1F /* RootNavigationView.swift */; };
 		C29A4D602C6303AD003B9B35 /* ScrollingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29A4D5F2C6303AD003B9B35 /* ScrollingView.swift */; };
-		C29BA8A5287177B300B9B794 /* SegmentedLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BA8A4287177B300B9B794 /* SegmentedLoadingView.swift */; };
-		C29BA8A7287177C500B9B794 /* SegmentedLoadedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BA8A6287177C500B9B794 /* SegmentedLoadedView.swift */; };
-		C2C5CE8A2861011D001B6AE8 /* MainText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C5CE892861011C001B6AE8 /* MainText.swift */; };
 		C2CD0B4B28824AEF001A7F1E /* ReviewText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CD0B4A28824AEF001A7F1E /* ReviewText.swift */; };
-		C2CD0B4D28825FD9001A7F1E /* ReviewTextStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CD0B4C28825FD9001A7F1E /* ReviewTextStore.swift */; };
-		C2CD0B4F28827725001A7F1E /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CD0B4E28827725001A7F1E /* ReviewView.swift */; };
+		C2CD0B4F28827725001A7F1E /* ReviewHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CD0B4E28827725001A7F1E /* ReviewHomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C2020AEF285C644200B19AF6 /* SFSafariViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariViewWrapper.swift; sourceTree = "<group>"; };
 		C2020AF1285C652100B19AF6 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Service.swift; path = rikaiClient/Service.swift; sourceTree = SOURCE_ROOT; };
-		C26829CB2A760713003FE3BB /* TranslateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateView.swift; sourceTree = "<group>"; };
-		C2805F1D28C3E7FC0028256D /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		C2805F1D28C3E7FC0028256D /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		C2890D43284E828900F0009D /* rikaiClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rikaiClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2890D46284E828900F0009D /* rikaiClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rikaiClientApp.swift; sourceTree = "<group>"; };
-		C2890D48284E828900F0009D /* ManualView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualView.swift; sourceTree = "<group>"; };
 		C2890D4A284E828C00F0009D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C2890D4D284E828C00F0009D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C292B772287A379D004644EB /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		C292B774287A3B5F004644EB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		C29337D1286A50F6000CEC1F /* SegmentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedView.swift; sourceTree = "<group>"; };
-		C29337D3286A511C000CEC1F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		C29337D5286A55D9000CEC1F /* InfoText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoText.swift; sourceTree = "<group>"; };
+		C29337D3286A511C000CEC1F /* RootNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationView.swift; sourceTree = "<group>"; };
 		C29A4D5F2C6303AD003B9B35 /* ScrollingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingView.swift; sourceTree = "<group>"; };
-		C29BA8A4287177B300B9B794 /* SegmentedLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedLoadingView.swift; sourceTree = "<group>"; };
-		C29BA8A6287177C500B9B794 /* SegmentedLoadedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedLoadedView.swift; sourceTree = "<group>"; };
-		C2C5CE892861011C001B6AE8 /* MainText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainText.swift; sourceTree = "<group>"; };
 		C2CAB1D5285073FE00FEE78E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C2CD0B4A28824AEF001A7F1E /* ReviewText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewText.swift; sourceTree = "<group>"; };
-		C2CD0B4C28825FD9001A7F1E /* ReviewTextStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTextStore.swift; sourceTree = "<group>"; };
-		C2CD0B4E28827725001A7F1E /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
+		C2CD0B4E28827725001A7F1E /* ReviewHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,13 +64,9 @@
 			isa = PBXGroup;
 			children = (
 				C2020AF1285C652100B19AF6 /* Service.swift */,
-				C2020AEF285C644200B19AF6 /* SFSafariViewWrapper.swift */,
-				C2C5CE892861011C001B6AE8 /* MainText.swift */,
-				C29337D5286A55D9000CEC1F /* InfoText.swift */,
 				C292B772287A379D004644EB /* Settings.swift */,
 				C2CD0B4A28824AEF001A7F1E /* ReviewText.swift */,
-				C2CD0B4C28825FD9001A7F1E /* ReviewTextStore.swift */,
-				C2805F1D28C3E7FC0028256D /* Utility.swift */,
+				C2805F1D28C3E7FC0028256D /* Utilities.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -115,12 +95,8 @@
 				C2CAB1D5285073FE00FEE78E /* Info.plist */,
 				C2890D46284E828900F0009D /* rikaiClientApp.swift */,
 				C29337D1286A50F6000CEC1F /* SegmentedView.swift */,
-				C26829CB2A760713003FE3BB /* TranslateView.swift */,
-				C29BA8A4287177B300B9B794 /* SegmentedLoadingView.swift */,
-				C2CD0B4E28827725001A7F1E /* ReviewView.swift */,
-				C29BA8A6287177C500B9B794 /* SegmentedLoadedView.swift */,
-				C2890D48284E828900F0009D /* ManualView.swift */,
-				C29337D3286A511C000CEC1F /* ContentView.swift */,
+				C2CD0B4E28827725001A7F1E /* ReviewHomeView.swift */,
+				C29337D3286A511C000CEC1F /* RootNavigationView.swift */,
 				C292B774287A3B5F004644EB /* SettingsView.swift */,
 				C29A4D5F2C6303AD003B9B35 /* ScrollingView.swift */,
 				C2890D4A284E828C00F0009D /* Assets.xcassets */,
@@ -215,21 +191,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2CD0B4D28825FD9001A7F1E /* ReviewTextStore.swift in Sources */,
 				C292B773287A379D004644EB /* Settings.swift in Sources */,
-				C29BA8A5287177B300B9B794 /* SegmentedLoadingView.swift in Sources */,
-				C2890D49284E828900F0009D /* ManualView.swift in Sources */,
-				C29BA8A7287177C500B9B794 /* SegmentedLoadedView.swift in Sources */,
-				C2C5CE8A2861011D001B6AE8 /* MainText.swift in Sources */,
-				C29337D6286A55D9000CEC1F /* InfoText.swift in Sources */,
-				C29337D4286A511C000CEC1F /* ContentView.swift in Sources */,
+				C29337D4286A511C000CEC1F /* RootNavigationView.swift in Sources */,
 				C2020AF2285C652100B19AF6 /* Service.swift in Sources */,
-				C2020AF0285C644200B19AF6 /* SFSafariViewWrapper.swift in Sources */,
-				C2CD0B4F28827725001A7F1E /* ReviewView.swift in Sources */,
+				C2CD0B4F28827725001A7F1E /* ReviewHomeView.swift in Sources */,
 				C292B775287A3B5F004644EB /* SettingsView.swift in Sources */,
 				C29A4D602C6303AD003B9B35 /* ScrollingView.swift in Sources */,
-				C26829CC2A760713003FE3BB /* TranslateView.swift in Sources */,
-				C2805F1E28C3E7FC0028256D /* Utility.swift in Sources */,
+				C2805F1E28C3E7FC0028256D /* Utilities.swift in Sources */,
 				C2890D47284E828900F0009D /* rikaiClientApp.swift in Sources */,
 				C29337D2286A50F6000CEC1F /* SegmentedView.swift in Sources */,
 				C2CD0B4B28824AEF001A7F1E /* ReviewText.swift in Sources */,
