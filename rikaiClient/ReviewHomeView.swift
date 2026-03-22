@@ -28,7 +28,9 @@ struct ReviewHomeView: View {
                     Text("Export Review Data to PC")
                 }
                 .onChange(of: service.canClearReview) {status in
-                    if status {
+                    
+                    
+                    if false {//if status {  #TODO: Remove this when done with dev
                         self.store.clear()
                         ReviewTextStore.save(reviewtexts: self.store.reviewTexts) {result in
                             if case .failure (let error) = result {
