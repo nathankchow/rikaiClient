@@ -30,7 +30,7 @@ struct ReviewHomeView: View {
                 .onChange(of: service.canClearReview) {status in
                     
                     
-                    if false {//if status {  #TODO: Remove this when done with dev
+                    if status {  
                         self.store.clear()
                         ReviewTextStore.save(reviewtexts: self.store.reviewTexts) {result in
                             if case .failure (let error) = result {

@@ -78,6 +78,8 @@ struct SegmentedRootView: View {
                         }
                       )
             Spacer()
+            Divider()
+                .foregroundStyle(.white)
             
             VStack{
                 Button(action: {
@@ -110,9 +112,10 @@ struct SegmentedRootView: View {
                 }
             }
             .frame(maxWidth: .infinity)
-            .border(Color(red: 0.380, green: 0.867, blue: 0.980), width: 2)
             .padding()
-        }.onChange(of: service.raws) { _ in
+            
+        }
+        .onChange(of: service.raws) { _ in
             //since we have subscription to service raws here, update charcount
             updateCharCount()
             if !isFrozen {
