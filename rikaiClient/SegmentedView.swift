@@ -106,9 +106,14 @@ struct SegmentedRootView: View {
                     }
                 }.padding(.horizontal)
 
-                
-                Button(action: onFreezeButtonPress) {
-                    freezeButtonText
+                HStack {
+                    Button(action: onFreezeButtonPress) {
+                        freezeButtonText
+                    }
+                    
+                    Button(action: service.requestMissedMessages ) {
+                        Text("Refresh")
+                    }
                 }
             }
             .frame(maxWidth: .infinity)
