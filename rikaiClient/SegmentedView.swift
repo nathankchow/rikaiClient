@@ -23,10 +23,10 @@ struct SegmentedRootView: View {
             return defaultRaw
         }
         else if service.raws.count == 1 {
-            return service.raws[0]
+            return service.raws[0].text
         }
         else {
-            return service.raws[rawIndex]
+            return service.raws[rawIndex].text
         }
     }
     
@@ -136,7 +136,7 @@ struct SegmentedRootView: View {
     
     func updateCharCount() {
         if service.raws.count > 0 {
-            settings.charCount += service.raws.last?.count ?? 0
+            settings.charCount += service.raws.last?.text.count ?? 0
         }
     }
     

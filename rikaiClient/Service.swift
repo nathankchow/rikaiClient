@@ -17,7 +17,7 @@ final class Service: ObservableObject {
    // @Published var maintext: MainText = MainText("Waiting for a message from the server...")
     @Published var raw: String = "Waiting for a message from the server..."
     @Published var info: String = ""
-    @Published public private(set) var raws = [String]()
+    @Published public private(set) var raws = [RawText]()
     @Published public private(set) var infos = [String:String]()
     @Published var canClearReview = false
     
@@ -42,23 +42,42 @@ final class Service: ObservableObject {
 
         }
         socket.on("message") { (data,act) in
+//            print(data)
+//            if let dict = data.first as? NSDictionary {
+//                print("found string")
+//                if let msg = dict["data"] as? String {
+//                    self.raws.append(msg)
+//                } else {
+//                    print("not string?")
+//                }
+//            } else {
+//                print("data0 not nsdict?")
+//            }
             print(data)
-//            if let msg = data[0] as? String {
             if let dict = data.first as? NSDictionary {
-                print("found string")
-                if let msg = dict["data"] as? String {
-//                    self.info = "Loading info..."
-//                    self.maintext = MainText(msg)
-//                    self.raw = msg
-                    self.raws.append(msg)
-                } else {
-                    print("not string?")
+                // #TODO: dont hardcode fields and map codable object in future
+                guard let msg = dict["data"] as? String else { return }
+                guard let timestamp = dict["timestamp"] as? Int else { return }
+                guard let message_id = dict["message_id"] as? String else { return }
+                let rawText =  RawText(
+                    text: msg,
+                    timestamp: timestamp,
+                    messageID: message_id
+                )
+                if let lateStatus = dict["is_resend"] as? Bool  {
+                    if lateStatus == true {
+                        if let index = self.raws.firstIndex(where: {$0.timestamp > rawText.timestamp}) {
+                            self.raws.insert(rawText, at: index)
+                        } else { self.raws.append(rawText) }
+                        return
+                    }
                 }
-            } else {
-                print("data0 not nsdict?")
+                
+                self.raws.append(rawText)
             }
         }
         
+        // #TODO: use guard lets
         socket.on("segmented") {(data, act) in
             print(data)
             if let dict = data.first as? NSDictionary {
@@ -86,7 +105,6 @@ final class Service: ObservableObject {
     
     static func getManagerAndSocket() -> (SocketManager, SocketIOClient)  {
         let IP_address: String = UserDefaults.standard.object(forKey: "IP_address") as? String ?? ""
-        let DeepL_API_key: String = UserDefaults.standard.object(forKey: "DeepL_API_key") as? String ?? ""
         let manager = SocketManager(socketURL:URL(string: "http://" + IP_address + ":8088")!, config: [.log(true), .compress])
         let socket = manager.socket(forNamespace: "/")
                 
@@ -111,4 +129,11 @@ final class Service: ObservableObject {
     func emitCsv(csv: String) {
         self.socket.emit("export_to_csv", csv)
     }
+}
+
+
+struct RawText: Equatable {
+    let text: String
+    let timestamp: Int
+    let messageID: String
 }

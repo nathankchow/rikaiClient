@@ -16,7 +16,7 @@ struct ScrollingView: View {
         return ["a","b","c","d"]
     } //TODO: delete this
     
-    var list2: [String] {
+    var list2: [RawText] {
         let arraySlice = service.raws.suffix(4)
         let newArray = Array(arraySlice)
         return newArray
@@ -25,7 +25,7 @@ struct ScrollingView: View {
     var body: some View {
         VStack {
             ForEach(0..<self.list2.count, id:\.self) {i in
-                Text(list2[i])
+                Text(list2[i].text)
                 Spacer()
             }
         }
