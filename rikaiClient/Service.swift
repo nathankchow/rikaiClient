@@ -42,7 +42,6 @@ final class Service: ObservableObject {
 
         }
         socket.on("message") { (data,act) in
-            print(data)
             if let dict = data.first as? NSDictionary {
                 // #TODO: dont hardcode fields and map codable object in future
                 guard let msg = dict["data"] as? String else { return }

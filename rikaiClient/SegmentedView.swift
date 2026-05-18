@@ -51,7 +51,7 @@ struct SegmentedRootView: View {
     
     
     var body: some View {
-        VStack{
+        VStack(spacing: 0) {
             Group{
                 if (!showTranslate && info.components(separatedBy: "\n\n*").count > 1) {
                     SegmentedLoadedView(raw: raw, info: info, isFrozen: $isFrozen)
