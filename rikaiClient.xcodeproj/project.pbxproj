@@ -21,6 +21,10 @@
 		C29A4D602C6303AD003B9B35 /* ScrollingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29A4D5F2C6303AD003B9B35 /* ScrollingView.swift */; };
 		C2A826292FBB8A550089DF57 /* kanji_dict.json in Resources */ = {isa = PBXBuildFile; fileRef = C2A826282FBB8A550089DF57 /* kanji_dict.json */; };
 		C2A8262B2FBB8BC50089DF57 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A8262A2FBB8BC50089DF57 /* AppConstants.swift */; };
+		C2A827943006B2010089DF57 /* CharacterFilter in Frameworks */ = {isa = PBXBuildFile; productRef = C2A827933006B2010089DF57 /* CharacterFilter */; };
+		C2A827963006B2010089DF57 /* IPADic in Frameworks */ = {isa = PBXBuildFile; productRef = C2A827953006B2010089DF57 /* IPADic */; };
+		C2A827983006B2020089DF57 /* Mecab-Swift in Frameworks */ = {isa = PBXBuildFile; productRef = C2A827973006B2020089DF57 /* Mecab-Swift */; };
+		C2A8279A3006B2020089DF57 /* StringTools in Frameworks */ = {isa = PBXBuildFile; productRef = C2A827993006B2020089DF57 /* StringTools */; };
 		C2CD0B4B28824AEF001A7F1E /* ReviewText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CD0B4A28824AEF001A7F1E /* ReviewText.swift */; };
 		C2CD0B4F28827725001A7F1E /* ReviewHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CD0B4E28827725001A7F1E /* ReviewHomeView.swift */; };
 /* End PBXBuildFile section */
@@ -49,8 +53,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2A827963006B2010089DF57 /* IPADic in Frameworks */,
+				C2A827943006B2010089DF57 /* CharacterFilter in Frameworks */,
+				C2A827983006B2020089DF57 /* Mecab-Swift in Frameworks */,
 				C27A91FC28605573004CA119 /* WrappingHStack in Frameworks */,
 				C22E5974284E8AE7003279A9 /* SocketIO in Frameworks */,
+				C2A8279A3006B2020089DF57 /* StringTools in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +146,10 @@
 			packageProductDependencies = (
 				C22E5973284E8AE7003279A9 /* SocketIO */,
 				C27A91FB28605573004CA119 /* WrappingHStack */,
+				C2A827933006B2010089DF57 /* CharacterFilter */,
+				C2A827953006B2010089DF57 /* IPADic */,
+				C2A827973006B2020089DF57 /* Mecab-Swift */,
+				C2A827993006B2020089DF57 /* StringTools */,
 			);
 			productName = rikaiClient;
 			productReference = C2890D43284E828900F0009D /* rikaiClient.app */;
@@ -170,6 +182,7 @@
 			packageReferences = (
 				C22E5972284E8AE7003279A9 /* XCRemoteSwiftPackageReference "socket" */,
 				C27A91FA28605573004CA119 /* XCRemoteSwiftPackageReference "WrappingHStack" */,
+				C2A827923006B2010089DF57 /* XCRemoteSwiftPackageReference "Mecab-Swift" */,
 			);
 			productRefGroup = C2890D44284E828900F0009D /* Products */;
 			projectDirPath = "";
@@ -433,6 +446,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		C2A827923006B2010089DF57 /* XCRemoteSwiftPackageReference "Mecab-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/shinjukunian/Mecab-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.8.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -445,6 +466,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C27A91FA28605573004CA119 /* XCRemoteSwiftPackageReference "WrappingHStack" */;
 			productName = WrappingHStack;
+		};
+		C2A827933006B2010089DF57 /* CharacterFilter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2A827923006B2010089DF57 /* XCRemoteSwiftPackageReference "Mecab-Swift" */;
+			productName = CharacterFilter;
+		};
+		C2A827953006B2010089DF57 /* IPADic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2A827923006B2010089DF57 /* XCRemoteSwiftPackageReference "Mecab-Swift" */;
+			productName = IPADic;
+		};
+		C2A827973006B2020089DF57 /* Mecab-Swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2A827923006B2010089DF57 /* XCRemoteSwiftPackageReference "Mecab-Swift" */;
+			productName = "Mecab-Swift";
+		};
+		C2A827993006B2020089DF57 /* StringTools */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2A827923006B2010089DF57 /* XCRemoteSwiftPackageReference "Mecab-Swift" */;
+			productName = StringTools;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
