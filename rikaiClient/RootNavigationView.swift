@@ -34,7 +34,11 @@ struct RootNavigationView: View {
         TabView {
             SegmentedRootView()
                 .tabItem {
-                    Label("Main", systemImage: "t.bubble.fill")
+                    Label("Auto", systemImage: "t.bubble.fill")
+                }
+            ScrollingView()
+                .tabItem {
+                    Label("Feed", systemImage: "list.bullet.clipboard.fill")
                 }
             ReviewHomeView()
                 .tabItem{
@@ -45,10 +49,6 @@ struct RootNavigationView: View {
                     Label("Settings",
                           systemImage:
                     "gearshape.fill")
-                }
-            ScrollingView()
-                .tabItem {
-                    Label("TEST", systemImage: "list.bullet.clipboard.fill") //TODO: Rename
                 }
         }
         .onAppear {

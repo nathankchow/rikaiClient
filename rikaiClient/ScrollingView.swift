@@ -8,32 +8,12 @@
 
 import SwiftUI
 
-struct ScrollingView: View {
-    @EnvironmentObject var service: Service
-    @EnvironmentObject var settings: Settings
-    @State var listLength = 4
-    var list: [String] {
-        return ["a","b","c","d"]
-    } //TODO: delete this
-    
-    var list2: [RawText] {
-        let arraySlice = service.raws.suffix(4)
-        let newArray = Array(arraySlice)
-        return newArray
-    }
-    
-    var body: some View {
-        VStack {
-            ForEach(0..<self.list2.count, id:\.self) {i in
-                Text(list2[i].text)
-                Spacer()
-            }
-        }
-    }
-}
+
 
 struct ScrollingView_Previews: PreviewProvider {
     static var previews: some View {
         ScrollingView()
+            .environmentObject(Service())
+            .environmentObject(Settings())
     }
 }

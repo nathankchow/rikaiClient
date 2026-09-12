@@ -32,6 +32,12 @@ final class Settings: ObservableObject {
         }
     }
     
+    @Published var useLayeredScrollView: Bool {
+        didSet {
+            UserDefaults.standard.set(useLayeredScrollView, forKey: "useLayeredScrollView")
+        }
+    }
+    
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     
@@ -40,5 +46,6 @@ final class Settings: ObservableObject {
         self.DeepL_API_key = UserDefaults.standard.object(forKey: "DeepL_API_key") as? String ?? ""
         self.charCount = UserDefaults.standard.object(forKey: "charCount") as? Int ?? 0
         self.autoAddReview = UserDefaults.standard.object(forKey: "autoAddReview") as? Bool ?? false
+        self.useLayeredScrollView = UserDefaults.standard.object(forKey: "useLayeredScrollView") as? Bool ?? false
     }
 }

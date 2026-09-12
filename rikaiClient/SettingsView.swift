@@ -63,6 +63,7 @@ struct SettingsView: View {
                 }
             }
             Toggle("Auto add to review on tap", isOn: $settings.autoAddReview)
+            Toggle("Carousel mode", isOn: $settings.useLayeredScrollView)
             Spacer()
         }.padding()
     }

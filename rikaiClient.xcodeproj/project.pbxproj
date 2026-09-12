@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C2020AF2285C652100B19AF6 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2020AF1285C652100B19AF6 /* Service.swift */; };
 		C22E5974284E8AE7003279A9 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = C22E5973284E8AE7003279A9 /* SocketIO */; };
+		C261A3213054A27200021A50 /* ScrollingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261A3203054A26C00021A50 /* ScrollingDetailView.swift */; };
 		C27A91FC28605573004CA119 /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = C27A91FB28605573004CA119 /* WrappingHStack */; };
 		C2805F1E28C3E7FC0028256D /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2805F1D28C3E7FC0028256D /* Utilities.swift */; };
 		C2890D47284E828900F0009D /* rikaiClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2890D46284E828900F0009D /* rikaiClientApp.swift */; };
@@ -18,6 +19,7 @@
 		C292B775287A3B5F004644EB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C292B774287A3B5F004644EB /* SettingsView.swift */; };
 		C29337D2286A50F6000CEC1F /* SegmentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29337D1286A50F6000CEC1F /* SegmentedView.swift */; };
 		C29337D4286A511C000CEC1F /* RootNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29337D3286A511C000CEC1F /* RootNavigationView.swift */; };
+		C29987FE3054A00D00F3BC4D /* ScrollingView 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29987FD3054A00D00F3BC4D /* ScrollingView 2.swift */; };
 		C29A4D602C6303AD003B9B35 /* ScrollingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29A4D5F2C6303AD003B9B35 /* ScrollingView.swift */; };
 		C2A826292FBB8A550089DF57 /* kanji_dict.json in Resources */ = {isa = PBXBuildFile; fileRef = C2A826282FBB8A550089DF57 /* kanji_dict.json */; };
 		C2A8262B2FBB8BC50089DF57 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A8262A2FBB8BC50089DF57 /* AppConstants.swift */; };
@@ -31,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		C2020AF1285C652100B19AF6 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Service.swift; path = rikaiClient/Service.swift; sourceTree = SOURCE_ROOT; };
+		C261A3203054A26C00021A50 /* ScrollingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingDetailView.swift; sourceTree = "<group>"; };
 		C2805F1D28C3E7FC0028256D /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		C2890D43284E828900F0009D /* rikaiClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rikaiClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2890D46284E828900F0009D /* rikaiClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rikaiClientApp.swift; sourceTree = "<group>"; };
@@ -40,6 +43,7 @@
 		C292B774287A3B5F004644EB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		C29337D1286A50F6000CEC1F /* SegmentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedView.swift; sourceTree = "<group>"; };
 		C29337D3286A511C000CEC1F /* RootNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationView.swift; sourceTree = "<group>"; };
+		C29987FD3054A00D00F3BC4D /* ScrollingView 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollingView 2.swift"; sourceTree = "<group>"; };
 		C29A4D5F2C6303AD003B9B35 /* ScrollingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingView.swift; sourceTree = "<group>"; };
 		C2A826282FBB8A550089DF57 /* kanji_dict.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = kanji_dict.json; sourceTree = "<group>"; };
 		C2A8262A2FBB8BC50089DF57 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
@@ -111,6 +115,8 @@
 				C29337D3286A511C000CEC1F /* RootNavigationView.swift */,
 				C292B774287A3B5F004644EB /* SettingsView.swift */,
 				C29A4D5F2C6303AD003B9B35 /* ScrollingView.swift */,
+				C29987FD3054A00D00F3BC4D /* ScrollingView 2.swift */,
+				C261A3203054A26C00021A50 /* ScrollingDetailView.swift */,
 				C2A826282FBB8A550089DF57 /* kanji_dict.json */,
 				C2890D4A284E828C00F0009D /* Assets.xcassets */,
 				C2890D4C284E828C00F0009D /* Preview Content */,
@@ -217,7 +223,9 @@
 				C2CD0B4F28827725001A7F1E /* ReviewHomeView.swift in Sources */,
 				C292B775287A3B5F004644EB /* SettingsView.swift in Sources */,
 				C29A4D602C6303AD003B9B35 /* ScrollingView.swift in Sources */,
+				C29987FE3054A00D00F3BC4D /* ScrollingView 2.swift in Sources */,
 				C2A8262B2FBB8BC50089DF57 /* AppConstants.swift in Sources */,
+				C261A3213054A27200021A50 /* ScrollingDetailView.swift in Sources */,
 				C2805F1E28C3E7FC0028256D /* Utilities.swift in Sources */,
 				C2890D47284E828900F0009D /* rikaiClientApp.swift in Sources */,
 				C29337D2286A50F6000CEC1F /* SegmentedView.swift in Sources */,

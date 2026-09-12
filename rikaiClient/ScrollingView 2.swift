@@ -1,37 +1,62 @@
+//
+//  ScrollingView 2.swift
+//  rikaiClient
+//
+//  Created by natha on 9/11/26.
+//
+
+
 import SwiftUI
 
 struct ScrollingView: View {
     @EnvironmentObject var service: Service
     @EnvironmentObject var settings: Settings
-    @State var listLength = 4
-    @State var detailRawText: RawText? = nil
     
+    let feedSize = 5
     
-    var list2: [RawText] {
-        let arraySlice = service.raws.suffix(4)
-        let newArray = Array(arraySlice)
-        return newArray
+    var rawTexts: [RawText] {
+        var arraySlice = Array(service.raws.suffix(feedSize))
+        
+        if settings.useLayeredScrollView && service.raws.count > feedSize {
+            let rotationCount = service.raws.count % feedSize
+            for _ in 0..<rotationCount {
+                if let last = arraySlice.popLast() {
+                    arraySlice.insert(last, at: 0)
+                }
+            }
+        }
+        
+        return arraySlice
+    }
+    
+    var mostRecentRawText: RawText? {
+        return service.raws.last
     }
     
     var body: some View {
-        NavigationStack{
-            VStack {
-                ForEach(0..<self.list2.count, id:\.self) {i in
-                    
-                    Button {
-                        
-                    } label: {
-                        Text(list2[i].text)
-                            .lineLimit(3)
-                            .padding()
-                            .frame(maxWidth: .infinity, maxHeight: 125)
-                            .border(.primary)
-                    }
+        NavigationStack {
+            List(rawTexts, id:\.messageID) { rawText in
+                NavigationLink(value: rawText) {
+                    Text(rawText.text)
+                        .lineLimit(3)
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .frame(height: 125)
+                        .padding(.horizontal)
+                        .border(
+                            rawText.messageID == mostRecentRawText?.messageID
+                                ? .blue
+                                : Color(red: 0.380, green: 0.867, blue: 0.980),
+                            width: 2
+                        )
                 }
-                
-                Spacer()
+                .listRowSeparator(.hidden)
             }
-            .padding(.horizontal)
+            .listStyle(.plain)
+            .animation(.default, value: rawTexts)
+            .navigationDestination(for: RawText.self) { rawText in
+                ScrollingDetailView(rawText: rawText)
+            }
         }
     }
 }

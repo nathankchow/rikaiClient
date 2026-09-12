@@ -16,7 +16,7 @@ struct SegmentedRootView: View {
     @State var isFrozen = false
     @State var rawIndex = 0
     @State var showTranslate = false
-    let defaultRaw = "Waiting for message from rikaiServer..."
+    var defaultRaw = "Waiting for message from rikaiServer..."
     
     var raw: String {
         if service.raws.count == 0 {
