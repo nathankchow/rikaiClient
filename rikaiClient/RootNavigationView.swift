@@ -66,11 +66,11 @@ struct RootNavigationView: View {
             }
             print(store.reviewTexts)
             print(settings.IP_address)
-            delayCheckEmptyReviewList(2.0)
+//            delayCheckEmptyReviewList(2.0)
         }
-        .onChange(of: store.reviewTexts) { reviewTexts in
-            if reviewTexts.count == 0 {
-                reviewListCleared=true
+        .onChange(of: service.canClearReview) { newValue in
+            if newValue == false {
+                reviewListCleared = true
             }
         }
         .alert(isPresented: $reviewListCleared) {

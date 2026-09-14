@@ -38,6 +38,12 @@ final class Settings: ObservableObject {
         }
     }
     
+    @Published var feedSize: Int {
+        didSet {
+            UserDefaults.standard.set(feedSize, forKey: "feedSize")
+        }
+    }
+    
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     
@@ -47,5 +53,6 @@ final class Settings: ObservableObject {
         self.charCount = UserDefaults.standard.object(forKey: "charCount") as? Int ?? 0
         self.autoAddReview = UserDefaults.standard.object(forKey: "autoAddReview") as? Bool ?? false
         self.useLayeredScrollView = UserDefaults.standard.object(forKey: "useLayeredScrollView") as? Bool ?? false
+        self.feedSize = UserDefaults.standard.object(forKey: "feedSize") as? Int ?? 5
     }
 }

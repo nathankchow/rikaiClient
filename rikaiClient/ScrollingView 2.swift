@@ -1,5 +1,5 @@
 //
-//  ScrollingView 2.swift
+//  ScrollingView.swift
 //  rikaiClient
 //
 //  Created by natha on 9/11/26.
@@ -11,14 +11,12 @@ import SwiftUI
 struct ScrollingView: View {
     @EnvironmentObject var service: Service
     @EnvironmentObject var settings: Settings
-    
-    let feedSize = 5
-    
-    var rawTexts: [RawText] {
-        var arraySlice = Array(service.raws.suffix(feedSize))
         
-        if settings.useLayeredScrollView && service.raws.count > feedSize {
-            let rotationCount = service.raws.count % feedSize
+    var rawTexts: [RawText] {
+        var arraySlice = Array(service.raws.suffix(settings.feedSize))
+        
+        if settings.useLayeredScrollView && service.raws.count > settings.feedSize {
+            let rotationCount = service.raws.count % settings.feedSize
             for _ in 0..<rotationCount {
                 if let last = arraySlice.popLast() {
                     arraySlice.insert(last, at: 0)
@@ -45,8 +43,8 @@ struct ScrollingView: View {
                         .padding(.horizontal)
                         .border(
                             rawText.messageID == mostRecentRawText?.messageID
-                                ? .blue
-                                : Color(red: 0.380, green: 0.867, blue: 0.980),
+                                ? Color(red: 0.98, green: 0.75, blue: 0.85)  // Pastel pink
+                                : Color(red: 0.380, green: 0.867, blue: 0.980),  // Pastel blue
                             width: 2
                         )
                 }

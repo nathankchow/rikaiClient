@@ -13,12 +13,13 @@ struct ReviewHomeView: View {
     
     @EnvironmentObject var store: ReviewTextStore
     @EnvironmentObject var service: Service
-    @State private var showSheet = false
 
     var body: some View {
         NavigationStack{
-            VStack {
+            VStack(spacing: 20) {
                 Text("Number of review texts: " + String(store.reviewTexts.count))
+                    .font(.title2)
+                    .fontWeight(.semibold)
                 
                 Button(
                     action: {
@@ -26,9 +27,13 @@ struct ReviewHomeView: View {
                     }
                 ) {
                     Text("Export Review Data to PC")
+                        .frame(maxWidth: .infinity)
+                        .padding()
                 }
+                .background(.thinMaterial)
+                .cornerRadius(8)
+                
                 .onChange(of: service.canClearReview) {status in
-                    
                     if status {
                         self.store.clear()
                         ReviewTextStore.save(reviewtexts: self.store.reviewTexts) {result in
@@ -40,26 +45,18 @@ struct ReviewHomeView: View {
                     }
                 }
                 
-                Button(action: {
-                    for txt in store.reviewTexts {
-                        print(txt.raw)
-                        print(txt.info)
-                    }
-                }) {
-                    Text("Print out review texts")
-                    
-                }
                 
-                Button {
-                    showSheet = true
+                NavigationLink {
+                    EditReviewView()
                 } label: {
                     Text("Edit")
+                        .frame(maxWidth: .infinity)
+                        .padding()
                 }
-                
+                .background(.thinMaterial)
+                .cornerRadius(8)
             }
-            .sheet(isPresented: $showSheet) {
-                EditReviewView()
-            }
+            .padding()
         }
     }
 }
@@ -70,29 +67,21 @@ struct EditReviewView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        NavigationStack{
-            List {
-                ForEach(store.reviewTexts, id: \.id) { reviewText in
+        List {
+            ForEach(store.reviewTexts, id: \.id) { reviewText in
+                NavigationLink {
+                    ReviewDetailView(reviewText: reviewText)
+                } label: {
                     Text(reviewText.raw)
                 }
-                .onDelete(perform: deleteTexts)
             }
-            .navigationTitle("Edit Review Texts")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbarBackground(.visible, for: .navigationBar)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: { dismiss() }) {
-                        HStack {
-                            Image(systemName: "chevron.left")
-                            Text("Back")
-                        }
-                    }
-                }
-            }
-            .toolbar {
-                EditButton()
-            }
+            .onDelete(perform: deleteTexts)
+        }
+        .navigationTitle("Edit Review Texts")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbar {
+            EditButton()
         }
     }
     
@@ -103,7 +92,6 @@ struct EditReviewView: View {
                 fatalError(error.localizedDescription)
             }
         }
-        
     }
 }
 

@@ -29,6 +29,7 @@
 		C2A8279A3006B2020089DF57 /* StringTools in Frameworks */ = {isa = PBXBuildFile; productRef = C2A827993006B2020089DF57 /* StringTools */; };
 		C2CD0B4B28824AEF001A7F1E /* ReviewText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CD0B4A28824AEF001A7F1E /* ReviewText.swift */; };
 		C2CD0B4F28827725001A7F1E /* ReviewHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CD0B4E28827725001A7F1E /* ReviewHomeView.swift */; };
+		C2D82EFA3057B99500A9CBBD /* ReviewDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D82EF93057B99500A9CBBD /* ReviewDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		C2CAB1D5285073FE00FEE78E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C2CD0B4A28824AEF001A7F1E /* ReviewText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewText.swift; sourceTree = "<group>"; };
 		C2CD0B4E28827725001A7F1E /* ReviewHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHomeView.swift; sourceTree = "<group>"; };
+		C2D82EF93057B99500A9CBBD /* ReviewDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				C2890D46284E828900F0009D /* rikaiClientApp.swift */,
 				C29337D1286A50F6000CEC1F /* SegmentedView.swift */,
 				C2CD0B4E28827725001A7F1E /* ReviewHomeView.swift */,
+				C2D82EF93057B99500A9CBBD /* ReviewDetailView.swift */,
 				C29337D3286A511C000CEC1F /* RootNavigationView.swift */,
 				C292B774287A3B5F004644EB /* SettingsView.swift */,
 				C29A4D5F2C6303AD003B9B35 /* ScrollingView.swift */,
@@ -218,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C292B773287A379D004644EB /* Settings.swift in Sources */,
+				C2D82EFA3057B99500A9CBBD /* ReviewDetailView.swift in Sources */,
 				C29337D4286A511C000CEC1F /* RootNavigationView.swift in Sources */,
 				C2020AF2285C652100B19AF6 /* Service.swift in Sources */,
 				C2CD0B4F28827725001A7F1E /* ReviewHomeView.swift in Sources */,

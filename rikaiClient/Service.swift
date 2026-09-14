@@ -12,18 +12,12 @@ import SwiftUI
 
 final class Service: ObservableObject {
     
-    static let debugMode = true
- 
     var manager: SocketManager
     var socket: SocketIOClient
    // @Published var maintext: MainText = MainText("Waiting for a message from the server...")
     @Published var raw: String = "Waiting for a message from the server..."
     @Published var info: String = ""
-    @Published public private(set) var raws = debugMode ? [
-        RawText(text: "お腹がすきました。", timestamp: 1, messageID: "1"),
-        RawText(text: "明日、友達と映画を見ます。", timestamp: 2, messageID: "2"),
-        RawText(text: "日本語を少し話せます。", timestamp: 3, messageID: "3"),
-    ] : [RawText]()
+    @Published public private(set) var raws = [RawText]()
     @Published public private(set) var infos = [String:String]()
     @Published var canClearReview = false
     
