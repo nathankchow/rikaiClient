@@ -12,11 +12,13 @@ import Combine
 //settingsview is slow when trying to update the textfield, probably becuase userdefaults updates multiple times as the textfield is being edited constantly. should try to implement so that userdefaults only updates on submission
 //also app froze for a while when finished updating textfield, specifically when trying to go back to segmented view from settings
 
+// #TODO: implement dynamic port
+
 struct SettingsView: View {
-    @Binding var IP_address: String
-    @Binding var DeepL_API_key: String
     @EnvironmentObject var settings: Settings
     @EnvironmentObject var service: Service
+    @Binding var IP_address: String
+    @Binding var DeepL_API_key: String
     @State var serviceStatus: String = "Fetching connection status..."
     @State var showDeepLAlert = false
     @State var deepLInput: String = ""

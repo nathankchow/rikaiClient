@@ -5,6 +5,7 @@
 //  Created by natha on 9/11/26.
 //
 
+// #TODO: implement dynamic feed entry height
 
 import SwiftUI
 
@@ -43,8 +44,8 @@ struct ScrollingView: View {
                         .padding(.horizontal)
                         .border(
                             rawText.messageID == mostRecentRawText?.messageID
-                                ? Color(red: 0.98, green: 0.75, blue: 0.85)  // Pastel pink
-                                : Color(red: 0.380, green: 0.867, blue: 0.980),  // Pastel blue
+                                ? Color(red: 0.98, green: 0.75, blue: 0.85)
+                                : Color(red: 0.380, green: 0.867, blue: 0.980),
                             width: 2
                         )
                 }

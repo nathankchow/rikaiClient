@@ -34,7 +34,7 @@ struct ScrollingDetailView: View {
         VStack(spacing: 0) {
             Group{
                 if (!showTranslate && info.components(separatedBy: "\n\n*").count > 1) {
-                    SegmentedLoadedView(raw: raw, info: info, isFrozen: .constant(false))
+                    SegmentedLoadedView(isFrozen: .constant(false), raw: raw, info: info)
                 } else if (!showTranslate){
                     VStack {
                         Text(raw).font(.headline).padding().border(Color(red: 0.380, green: 0.867, blue: 0.980), width: 2)

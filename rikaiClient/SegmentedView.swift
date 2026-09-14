@@ -16,6 +16,7 @@ struct SegmentedRootView: View {
     @State var isFrozen = false
     @State var rawIndex = 0
     @State var showTranslate = false
+    
     let defaultRaw = "Waiting for message from rikaiServer..."
     
     var raw: String {
@@ -41,7 +42,7 @@ struct SegmentedRootView: View {
     }
     
     var freezeButtonText: Text {
-        return Text(isFrozen ? "Unfreeze":"Freeze")
+        return Text(isFrozen ? "Unfreeze" : "Freeze")
             .font(.headline)
     }
     
@@ -51,128 +52,125 @@ struct SegmentedRootView: View {
     }
     
     
-        var body: some View {
-            VStack(spacing: 0) {
-                Group{
-                    if (!showTranslate && info.components(separatedBy: "\n\n*").count > 1) {
-                        SegmentedLoadedView(raw: raw, info: info, isFrozen: $isFrozen)
-                    } else if (!showTranslate){
-                        VStack {
-                            Text(info).font(.subheadline).padding([.leading, .trailing])
-                            
-                            Spacer()
-                            
-                            Text(raw).font(.headline).padding().border(Color(red: 0.380, green: 0.867, blue: 0.980), width: 2)
-                        }.frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .contentShape(Rectangle())
+    var body: some View {
+        VStack(spacing: 0) {
+            Group{
+                if (!showTranslate && info.components(separatedBy: "\n\n*").count > 1) {
+                    SegmentedLoadedView(isFrozen: $isFrozen, raw: raw, info: info)
+                } else if (!showTranslate){
+                    VStack {
+                        Text(info).font(.subheadline).padding([.leading, .trailing])
+                        
+                        Spacer()
+                        
+                        Text(raw).font(.headline).padding().border(Color(red: 0.380, green: 0.867, blue: 0.980), width: 2)
+                    }.frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .contentShape(Rectangle())
+                } else {
+                    TranslateView(text: raw)
+                }
+            }.gesture(DragGesture()
+                        .onEnded { value in
+                        print("value ",value.translation.width)
+                          let direction = detectDirection(value: value)
+                          if direction == .left {
+                            decreaseIndex()
+                          }
+                else if direction == .right {
+                    increaseIndex()
+                }
+                        }
+                      )
+            Spacer()
+            
+            VStack(spacing: 12) {
+                Button(action: {
+                    if (!showTranslate) {
+                        isFrozen = true
+                        showTranslate = true
                     } else {
-                        TranslateView(text: raw)
+                        showTranslate = false
+                        processFreeze()
                     }
-                }.gesture(DragGesture()
-                            .onEnded { value in
-                            print("value ",value.translation.width)
-                              let direction = detectDirection(value: value)
-                              if direction == .left {
-                                decreaseIndex()
-                              }
-                    else if direction == .right {
-                        increaseIndex()
-                    }
-                            }
-                          )
-                Spacer()
-                
-                VStack(spacing: 12) {
-                    Button(action: {
-                        if (!showTranslate) {
-                            isFrozen = true
-                            showTranslate = true
-                        } else {
-                            showTranslate = false
-                            processFreeze()
-                        }
-                    }) {
-                        Text(showTranslate == false ? "Translate" : "Breakdown")
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .font(.headline)
-                    }
-                    .frame(maxWidth: .infinity)
-                    .background(.thinMaterial)
-                    .cornerRadius(8)
-                    
-                    Button(action: onFreezeButtonPress) {
-                        freezeButtonText
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                    }
-                    .frame(maxWidth: .infinity)
-                    .background(.thinMaterial)
-                    .cornerRadius(8)
-                    
-                    HStack(spacing: 12) {
-                        Button(action: self.clearAll) {
-                            Image(systemName: "trash")
-                                .font(.title2)
-                                .frame(width: 44, height: 44)
-                        }
-                        .background(.thinMaterial)
-                        .cornerRadius(8)
-                        
-                        Button(action: service.requestMissedMessages) {
-                            Image(systemName: "arrow.clockwise")
-                                .font(.title2)
-                                .frame(width: 44, height: 44)
-                        }
-                        .background(.thinMaterial)
-                        .cornerRadius(8)
-                        
-                        Spacer()
-                        
-                        Text("\(min(service.raws.count, self.rawIndex + 1)) / \(service.raws.count)")
-                            .font(.body)
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 44)
-                            .background(.thinMaterial)
-                            .cornerRadius(8)
-                        
-                        Spacer()
-                        
-                        Button(action: self.decreaseIndex) {
-                            Image(systemName: "arrow.backward.circle.fill")
-                                .font(.title2)
-                                .frame(width: 44, height: 44)
-                        }
-                        .background(.thinMaterial)
-                        .cornerRadius(8)
-                        
-                        Button(action: self.increaseIndex) {
-                            Image(systemName: "arrow.forward.circle.fill")
-                                .font(.title2)
-                                .frame(width: 44, height: 44)
-                        }
-                        .background(.thinMaterial)
-                        .cornerRadius(8)
-                    }
-                    .frame(height: 60)
-                    .padding(.horizontal)
+                }) {
+                    Text(showTranslate == false ? "Translate" : "Breakdown")
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .font(.headline)
                 }
                 .frame(maxWidth: .infinity)
-                .padding()
-            }
-            .onChange(of: service.raws) { _ in
-                //since we have subscription to service raws here, update charcount
-                updateCharCount()
-                if !isFrozen {
-                    self.rawIndex = max(service.raws.count - 1,0) //for some reason,
-                    print("Changing rawIndex to \(self.rawIndex)")
-
+                .background(.thinMaterial)
+                .cornerRadius(8)
+                
+                Button(action: onFreezeButtonPress) {
+                    freezeButtonText
+                        .frame(maxWidth: .infinity)
+                        .padding()
                 }
+                .frame(maxWidth: .infinity)
+                .background(.thinMaterial)
+                .cornerRadius(8)
+                
+                HStack(spacing: 12) {
+                    Button(action: self.clearAll) {
+                        Image(systemName: "trash")
+                            .font(.title2)
+                            .frame(width: 44, height: 44)
+                    }
+                    .background(.thinMaterial)
+                    .cornerRadius(8)
+                    
+                    Button(action: service.requestMissedMessages) {
+                        Image(systemName: "arrow.clockwise")
+                            .font(.title2)
+                            .frame(width: 44, height: 44)
+                    }
+                    .background(.thinMaterial)
+                    .cornerRadius(8)
+                    
+                    Spacer()
+                    
+                    Text("\(min(service.raws.count, self.rawIndex + 1)) / \(service.raws.count)")
+                        .font(.body)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 44)
+                        .background(.thinMaterial)
+                        .cornerRadius(8)
+                    
+                    Spacer()
+                    
+                    Button(action: self.decreaseIndex) {
+                        Image(systemName: "arrow.backward.circle.fill")
+                            .font(.title2)
+                            .frame(width: 44, height: 44)
+                    }
+                    .background(.thinMaterial)
+                    .cornerRadius(8)
+                    
+                    Button(action: self.increaseIndex) {
+                        Image(systemName: "arrow.forward.circle.fill")
+                            .font(.title2)
+                            .frame(width: 44, height: 44)
+                    }
+                    .background(.thinMaterial)
+                    .cornerRadius(8)
+                }
+                .frame(height: 60)
+                .padding(.horizontal)
+            }
+            .frame(maxWidth: .infinity)
+            .padding()
+        }
+        .onChange(of: service.raws) { _ in
+            //since we have subscription to service raws here, update charcount
+            updateCharCount()
+            if !isFrozen {
+                self.rawIndex = max(service.raws.count - 1,0) //for some reason,
+                print("Changing rawIndex to \(self.rawIndex)")
+
             }
         }
-    
-    
-    
+    }
     
     func updateCharCount() {
         if service.raws.count > 0 {
@@ -206,8 +204,6 @@ struct SegmentedRootView: View {
         }
     }
     
-    
-    
     func onFreezeButtonPress()  {
         if isFrozen {
             self.isFrozen = false
@@ -233,83 +229,89 @@ struct SegmentedLoadingView: View {
         VStack{
             Text(self.service.raw).font(.headline).padding().border(Color(red: 0.380, green: 0.867, blue: 0.980), width: 2)
 
-        ScrollView{
-            Text(self.service.info).font(.subheadline).padding([.leading, .trailing])
-        }
+            ScrollView{
+                Text(self.service.info).font(.subheadline).padding([.leading, .trailing])
+            }
         }
     }
 }
 
 struct SegmentedLoadedView: View {
-    var raw: String
-    var info: String
     @EnvironmentObject var service: Service
     @EnvironmentObject var store: ReviewTextStore
     @EnvironmentObject var settings: Settings
+    @Binding var isFrozen: Bool
+    @State var blacklist: Set<String> = ["は","を","も","に","へ","で","だって","って","が","から","と","や","の","ね","よ"]
+    
+    var raw: String
+    var info: String
     
     var infotext: InfoText {
         InfoText(raw: raw, info: info)
     }
+    
     var segmentedRawLoc: ([String],[Int]) {
         getSegmentedRaw(raw: infotext.raw, words: infotext.words)
     }
+    
     var segmentedRaw: [String] {
         return segmentedRawLoc.0
     }
+    
     var segmentedLocs: [Int] {
         return segmentedRawLoc.1
     }
-    @State var blacklist: Set<String> = ["は","を","も","に","へ","で","だって","って","が","から","と","や","の","ね","よ"]
-    @Binding var isFrozen:Bool
     
     var body: some View {
         VStack{
-        ScrollViewReader {proxy in
-            VStack {
-                Divider()
-                    .opacity(0)
-                
-                ScrollView {
-                    ForEach(0..<self.infotext.defs.count, id: \.self) {i in
-                        if !self.blacklist.contains(self.infotext.words[i]){
-                            HStack{
-                                Text("*" + self.infotext.defs[i])
-                                Spacer()
-                            }.id(i)
-                            if i != self.infotext.defs.count-1 {
-                                Text("\n")
+            ScrollViewReader {proxy in
+                VStack {
+                    Divider()
+                        .opacity(0)
+                    
+                    ScrollView {
+                        ForEach(0..<self.infotext.defs.count, id: \.self) {i in
+                            if !self.blacklist.contains(self.infotext.words[i]){
+                                HStack{
+                                    Text("*" + self.infotext.defs[i])
+                                    Spacer()
+                                }.id(i)
+                                if i != self.infotext.defs.count-1 {
+                                    Text("\n")
+                                }
                             }
                         }
-                    }
-                    Text("\n").frame(height: UIScreen.main.bounds.height)
-                }.padding([.leading,.trailing])
-                
-                WrappingHStack(0..<self.segmentedRaw.count, id: \.self, spacing: WrappingHStack.Spacing.constant(5.0), lineSpacing: CGFloat(10.0)){i in
-                    if self.segmentedLocs[i] != -1 && !self.blacklist.contains(self.segmentedRaw[i]) {
-                        Text(self.segmentedRaw[i]).font(.headline).underline()
-                            .onTapGesture() {
-                                if settings.autoAddReview {
-                                    addReviewText(i)
-                                }
-                                proxy.scrollTo(self.segmentedLocs[i], anchor: .top)
-                            }
-                            .contextMenu {
-                                Button {
-                                  addReviewText(i)
-                                } label: {
-                                    Label("Add to Review", systemImage: "book.fill")
-                                }
-                            }
                         
-                        
-                    } else {
-                        Text(self.segmentedRaw[i])
+                        Text("\n").frame(height: UIScreen.main.bounds.height)
                     }
-                }.padding().border(Color(red: 0.380, green: 0.867, blue: 0.980), width: 2)
-                
+                    .padding([.leading,.trailing])
+                    
+                    WrappingHStack(0..<self.segmentedRaw.count, id: \.self, spacing: WrappingHStack.Spacing.constant(5.0), lineSpacing: CGFloat(10.0)){i in
+                        if self.segmentedLocs[i] != -1 && !self.blacklist.contains(self.segmentedRaw[i]) {
+                            Text(self.segmentedRaw[i]).font(.headline).underline()
+                                .onTapGesture() {
+                                    if settings.autoAddReview {
+                                        addReviewText(i)
+                                    }
+                                    proxy.scrollTo(self.segmentedLocs[i], anchor: .top)
+                                }
+                                .contextMenu {
+                                    Button {
+                                      addReviewText(i)
+                                    } label: {
+                                        Label("Add to Review", systemImage: "book.fill")
+                                    }
+                                }
+                            
+                            
+                        } else {
+                            Text(self.segmentedRaw[i])
+                        }
+                    }.padding().border(Color(red: 0.380, green: 0.867, blue: 0.980), width: 2)
+                    
+                }
             }
-            }
-    }
+        }
     }
     
     func addReviewText(_ i:Int) -> Void {
@@ -408,8 +410,11 @@ struct TranslateView: View {
             }
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
-            let translations = try! decoder.decode(TranslationData.self, from: data)
-            translation = translations.translations.first!["text"]!
+            guard let translations = try? decoder.decode(TranslationData.self, from: data) else {
+                translation = "Failed to get translation."
+                return
+            }
+            translation = translations.translations.first?["text"] ?? "Failed to get translation."
         }
         
         task.resume()
