@@ -1,15 +1,6 @@
 {
-  "originHash" : "8676bf37f79acbe3264b83e7460e4b3e82567f2de885a0e3b17dd060584c521e",
+  "originHash" : "127e675f19284d610ff571904df33a007b52dac5a681c124f7232aa8bf637792",
   "pins" : [
-    {
-      "identity" : "mecab-swift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/shinjukunian/Mecab-Swift",
-      "state" : {
-        "revision" : "1f096492e37fc05fc2e7304091f54889974c5368",
-        "version" : "0.8.0"
-      }
-    },
     {
       "identity" : "socket.io-client-swift",
       "kind" : "remoteSourceControl",
